@@ -95,6 +95,7 @@ public class ActivityStu extends AppCompatActivity {
     }
 
     public void open學生班級課表() {
+        //Master test
         intent = new Intent(this,ActivityStuClassSyllabus.class);
         startActivity(intent);
 
