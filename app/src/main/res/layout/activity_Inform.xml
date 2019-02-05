@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityStuInfo">
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="通知事項"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryDark"
+        tools:ignore="MissingConstraints" />
+    <LinearLayout
+        android:id="@+id/dateArea"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+        tools:ignore="MissingConstraints">
+        <Button
+            android:layout_weight="2"
+            android:id="@+id/btnLastDay"
+            android:background="@android:drawable/ic_media_rew"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/btnNextDay"
+            android:layout_weight="2"
+            android:background="@android:drawable/ic_media_ff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/txt1"
+        android:text="今日作業"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/dateArea"
+        tools:ignore="MissingConstraints" />
+    <LinearLayout
+        android:id="@+id/HomeworkArea"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/txt_background1"
+        app:layout_constraintTop_toBottomOf="@+id/txt1"
+        tools:ignore="MissingConstraints">
+        <ListView
+            android:id="@+id/lvHomework"
+            android:divider="@android:color/darker_gray"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/txt2"
+        android:text="明日用品"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/HomeworkArea"
+        tools:ignore="MissingConstraints" />
+    <LinearLayout
+        android:id="@+id/StaffArea"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/txt_background1"
+        app:layout_constraintTop_toBottomOf="@+id/txt2"
+        tools:ignore="MissingConstraints">
+        <ListView
+            android:id="@+id/lvStaff"
+            android:divider="@android:color/darker_gray"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/txt3"
+        android:text="其他提醒"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/StaffArea"
+        tools:ignore="MissingConstraints" />
+    <LinearLayout
+        android:id="@+id/OtherArea"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/txt_background1"
+        app:layout_constraintTop_toBottomOf="@+id/txt3"
+        tools:ignore="MissingConstraints">
+        <ListView
+            android:id="@+id/lvOther"
+            android:divider="@android:color/darker_gray"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
