@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -95,6 +96,8 @@ public class ActivityStu extends AppCompatActivity {
     }
 
     public void open學生班級課表() {
+        //Test New Branch
+        Log.d("LetNoBook","測試Git分支功能");
         intent = new Intent(this,ActivityStuClassSyllabus.class);
         startActivity(intent);
 
