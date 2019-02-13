@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -17,11 +18,21 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ActivitySetting extends AppCompatActivity {
     Intent intent;
+    private ArrayList<CCommunication> list = new ArrayList<>();
+    CCommunicationFactory comFactory;
+
     //虛擬Bar-返回鍵 : 至首頁
     @Override
     public void onBackPressed() {
@@ -30,79 +41,111 @@ public class ActivitySetting extends AppCompatActivity {
         startActivity(intent);
         ActivitySetting.this.finish();
     }
-    private TextView txtTest;
-    private ListView listView;
-    private String json = null;
-    private ArrayList<HashMap<String, String>> arrayList = new ArrayList<HashMap<String, String>>();
-    private SimpleAdapter adapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //繼承AppCompatActivity要用↓達成全屏
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-        txtTest = findViewById(R.id.txtTest);
-        listView = findViewById(R.id.listView);
-        new ParseTask().execute();
+        comFactory = new CCommunicationFactory();
+        btnLast = findViewById(R.id.btnLast);
+        btnLast.setOnClickListener(btnLast_Click);
+        btnNext = findViewById(R.id.btnNext);
+        btnNext.setOnClickListener(btnNext_Click);
+        txtH = findViewById(R.id.txtH);
+        txtO = findViewById(R.id.txtO);
+        txtS = findViewById(R.id.txtS);
+        new GetCommTask().execute();
     }
-    private class ParseTask  extends AsyncTask<Void,Void,SimpleAdapter> {
+    private View.OnClickListener btnLast_Click = new View.OnClickListener() {
         @Override
-        protected SimpleAdapter doInBackground(Void... voids) {
-            String[] from = {"stu_item", "stu_id_item"};
-            int[] to = {R.id.txtItem, R.id.txtId};
-            HashMap<String, String> hashmap;
-
-            //取得(使用者)老師姓名, 當作查 tStudents 的 Key
-            SharedPreferences table = getSharedPreferences(CDictionary.LoginAct_userInfo,MODE_PRIVATE);
-            String teacherName = table.getString(CDictionary.LoginAct_userName, null);
-
-            if(teacherName == null)
-                teacherName = null;
-
+        public void onClick(View v) {
+            comFactory.MoveToPrevious();
+            CCommunication data = comFactory.getCurrent();
+            txtH.setText(data.getF老師交代事項());
+            txtO.setText(data.getF家長交代事項());
+            txtS.setText(data.getF日期());
+        }
+    };
+    private View.OnClickListener btnNext_Click = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            comFactory.MoveToNext();
+            CCommunication data = comFactory.getCurrent();
+            txtH.setText(data.getF老師交代事項());
+            txtO.setText(data.getF家長交代事項());
+            txtS.setText(data.getF日期());
+        }
+    };
+    private class GetCommTask extends AsyncTask<Void,Void,String>{
+        @Override
+        protected String doInBackground(Void... voids) {
+            URL url = null;
             try {
-                //抓學生資料表
-                CHttpUrlConnection c = new CHttpUrlConnection();
-                json = c.getTable("tStudents");
-                Log.d("LetNoBook", "抓學生str"+json);
-                JSONArray jArray = new JSONArray(json);
-                Log.d("LetNoBook", "抓學生jA"+jArray.toString());
-                arrayList.clear();
+                url = new URL(path);//宣告連線變數
+                conn = (HttpURLConnection) url.openConnection();
+                conn.setConnectTimeout(8000);
+                conn.setRequestMethod("GET");
+                conn.connect();
 
-                for (int i = 0; i < jArray.length(); i++) {
-                    //根據老師的姓名, 取得屬此(使用者)導師姓名的學生, 才能加入列表
-                    JSONObject stu = jArray.getJSONObject(i);
-                    String tName = stu.getString("f導師姓名");
-                    String cId = stu.getString("f學生編號");
-                    String name = stu.getString("f學生姓名");
-                    hashmap = new HashMap<String, String>();
-                    if(tName.equals(teacherName)){
-                        hashmap.put("stu_id_item", cId);
-                        hashmap.put("stu_item", name);
-                        Log.d("LetNoBook", "tStudentsList:" +cId+name);
-                        arrayList.add(hashmap);
-                    }
+                //宣告串流變數 = 取連線的串流
+                InputStream inputStream = conn.getInputStream();
+                //緩存串流
+                bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                //串流給字串
+                String str;
+                while((str = bufferedReader.readLine()) != null){
+                    data = data + str + "\n";
+                    result.append(str);
                 }
-                adapter = new SimpleAdapter(ActivitySetting.this, arrayList, R.layout.item2, from, to);
+                bufferedReader.close();
+                inputStream.close();
 
+                Log.d("LetNoBook", "getComm結果==" + result);
+                conn.disconnect();
+            } catch (MalformedURLException e1) {
+                e1.printStackTrace();
+            }catch (final IOException e){
+                Log.d("LetNoBook", "getComm-Error", e);
+            }
+            return result.toString();
+        }
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            try {
+                JSONArray jArray = new JSONArray(s);
+                for(int i=0;i<jArray.length();i++){
+                    JSONObject Comm = jArray.getJSONObject(i);
+                    String d = Comm.getString("f日期");
+                    String fDate = d.substring(0, 10);
+                    String tMsg = Comm.getString("f老師交代事項");
+                    String id = Comm.getString("f學生編號");
+                    Boolean isSign = Comm.getBoolean("f家長簽名");
+                    String cls = Comm.getString("fClassId");
+
+                    if(tMsg.equals(null)|| tMsg.equals("null"))
+                        tMsg = "空白";
+                    String pMsg = Comm.getString("f家長交代事項");
+                    if(pMsg.equals(null)|| pMsg.equals("null"))
+                        pMsg = "空白";
+                    Log.d("LetNoBook", "d-"+fDate+"tMsg-"+tMsg+"pMsg-"+pMsg+"s-"+id+"cls-"+cls);
+
+                    CCommunication cmm;
+                    list.add(new CCommunication(fDate, tMsg, pMsg,Integer.valueOf(id),isSign,Integer.valueOf(cls)));
+                    Log.d("LetNoBook","list.size():" +list.size());
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            return adapter;
-        }
 
-        @Override
-        protected void onPostExecute(SimpleAdapter adapter) {
-            super.onPostExecute(adapter);
-            listView.setAdapter(adapter);
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    String sId = String.valueOf(arrayList.get(position).get("stu_id_item"));
-                    txtTest.setText(sId);
-                }
-            });
+
         }
     }
-
+    private Button btnLast, btnNext;
+    private TextView txtH,txtS,txtO;
+    private StringBuilder result = new StringBuilder();
+    private String data = new String();
+    private HttpURLConnection conn = null;
+    private BufferedReader bufferedReader = null;
+    private String path = "http://13.67.105.225/api/getComm.aspx/?searchStuId=111";
 }

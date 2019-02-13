@@ -11,18 +11,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 
 public class ActivityLogin extends AppCompatActivity {
     //虛擬Bar-返回鍵 : 至首頁
@@ -48,6 +40,8 @@ public class ActivityLogin extends AppCompatActivity {
 
     private String jsonString = new String();
     private JSONObject jo = null;
+    public static String user = null;
+    public static String clsId = null;
 
     //元件初始化
     private void InitialComponent() {
@@ -60,16 +54,14 @@ public class ActivityLogin extends AppCompatActivity {
         btn登入.setOnClickListener(btn登入_click);
         btn取消登入 = findViewById(R.id.btnExit);
         btn取消登入.setOnClickListener(btn取消登入_click);
+        Log.d("LetNoBook_LoginAct","初始化");
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //繼承AppCompatActivity要用↓達成全屏
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        Log.d("LetNoBook","LoginAct設全屏");
         setContentView(R.layout.activity_login);
-        Log.d("LetNoBook","LoginAct初始化");
+
         InitialComponent();
 
         ckb記帳密.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
@@ -159,16 +151,26 @@ public class ActivityLogin extends AppCompatActivity {
                 new Thread(){
                     @Override
                     public void run() {
-                        String path = "tStudents/"+ uId;
+                        String path = "institute/tStudents/"+ uId;
                         try {
                             CHttpUrlConnection c = new CHttpUrlConnection();
                             jsonString = c.getTable(path);
                             jo = new JSONObject(jsonString);
-                            String user = jo.getString("f學生編號");
+                            user = jo.getString("f學生編號");
                             String pwd = jo.getString("f學生密碼");
                             final String famId = jo.getString("f家庭編號");
-                            final String clsId = jo.getString("fClassId");
+                            clsId = jo.getString("fClassId");
                             final String uName = jo.getString("f學生姓名");
+
+                            String tName = jo.getString("f導師姓名");
+                            Integer tId = 0;
+                            if(tName.equals("李旻峻")){
+                                tId = 200;
+                            }else if(tName.equals("陳艷晴")){
+                                tId = 201;
+                            }else if(tName.equals("李美磬")){
+                                tId = 202;
+                            }
 
                             //取得生日start -> 只取年月日 -> 去除-符號
                             String bD = jo.getString("f學生生日"); //yyyy-mm-dd Thh:mm:ss
@@ -186,10 +188,12 @@ public class ActivityLogin extends AppCompatActivity {
                             //將登入者資訊記入"LoginAct_userInfo"
                             SharedPreferences table = getSharedPreferences(CDictionary.LoginAct_userInfo,MODE_PRIVATE);
                             SharedPreferences.Editor row = table.edit();
+                            row.putString(CDictionary.LoginAct_userId, user);
                             row.putString(CDictionary.LoginAct_userFamilyId,famId);
                             row.putString(CDictionary.LoginAct_userName,uName);
                             row.putString(CDictionary.LoginAct_userBirthday,bDay);
                             row.putString(CDictionary.LoginAct_userClassId,clsId);
+                            row.putInt(CDictionary.LoginAct_teacherId, tId);
                             row.commit();
 
                             if(uId.equals(user)){
@@ -223,9 +227,9 @@ public class ActivityLogin extends AppCompatActivity {
                             CHttpUrlConnection c = new CHttpUrlConnection();
                             jsonString = c.getTable(path);
                             jo = new JSONObject(jsonString);
-                            String user = jo.getString("f老師編號");
+                            user = jo.getString("f老師編號");
                             String pwd = jo.getString("f老師密碼");
-                            final String[] uName = {jo.getString("f老師姓名")};
+                            final String uName = jo.getString("f老師姓名");
 
                             //取得生日start -> 只取年月日 -> 去除-符號
                             String bD = jo.getString("f老師生日"); //yyyy-mm-dd Thh:mm:ss
@@ -235,14 +239,14 @@ public class ActivityLogin extends AppCompatActivity {
 
                             Log.d("LetNoBook", "f老師編號" + user);
                             Log.d("LetNoBook", "f老師密碼" + pwd);
-                            Log.d("LetNoBook", "f老師姓名" + uName[0]);
+                            Log.d("LetNoBook", "f老師姓名" + uName);
                             Log.d("LetNoBook", "f老師生日" + bDay);
 
                             //將登入者資訊記入"LoginAct_userInfo"
                             SharedPreferences table = getSharedPreferences(CDictionary.LoginAct_userInfo,MODE_PRIVATE);
                             SharedPreferences.Editor row = table.edit();
                             row.putString(CDictionary.LoginAct_userId,user);
-                            row.putString(CDictionary.LoginAct_userName, uName[0]);
+                            row.putString(CDictionary.LoginAct_userName, uName);
                             row.putString(CDictionary.LoginAct_userBirthday,bDay);
                             row.commit();
 
@@ -252,7 +256,7 @@ public class ActivityLogin extends AppCompatActivity {
                                         @Override
                                         public void run() {
                                             Toast.makeText(getApplicationContext()
-                                                    , "歡迎 "+ uName[0] +" 登入"
+                                                    , "歡迎 "+ uName+" 登入"
                                                     , Toast.LENGTH_SHORT).show();
                                             intent = new Intent(ActivityLogin.this, ActivityTea.class);
                                             startActivity(intent);
@@ -276,7 +280,7 @@ public class ActivityLogin extends AppCompatActivity {
                             CHttpUrlConnection c = new CHttpUrlConnection();
                             jsonString = c.getTable(path);
                             jo = new JSONObject(jsonString);
-                            String user = jo.getString("f家庭編號");
+                            user = jo.getString("f家庭編號");
                             String pwd = jo.getString("f家長密碼");
                             final String uName = jo.getString("f家長姓名");
 
@@ -307,7 +311,7 @@ public class ActivityLogin extends AppCompatActivity {
                                             Toast.makeText(getApplicationContext()
                                                     , "歡迎 "+uName+" 登入"
                                                     , Toast.LENGTH_SHORT).show();
-                                            intent = new Intent(ActivityLogin.this, ActivityPAR.class);
+                                            intent = new Intent(ActivityLogin.this, ActivityPar.class);
                                             startActivity(intent);
                                             ActivityLogin.this.finish();
                                         }

@@ -14,7 +14,7 @@ public class CHttpUrlConnection {
     private String data = new String();
     private HttpURLConnection conn = null;
     private BufferedReader bufferedReader = null;
-    private String path = "http://13.67.105.225/api/institute/";
+    private String path = "http://13.67.105.225/api/";
     protected String getTable(String tableName) {
         try {
             //ip位址
@@ -38,10 +38,10 @@ public class CHttpUrlConnection {
             bufferedReader.close();
             inputStream.close();
 
-            Log.d("LetNoBook", "getJson--結果==" + result);
+            Log.d("LetNoBook", "連線結果=jsonStr=" + result);
             conn.disconnect();
         }catch (final IOException e){
-            Log.d("LetNoBook", "getJson---Error", e);
+            Log.d("LetNoBook", "連線結果=Error", e);
         }
         return result.toString();
     }

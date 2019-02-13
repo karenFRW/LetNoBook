@@ -27,7 +27,7 @@
                 android:text="一"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:background="@color/colorSchedule1"
+                android:background="@color/colorSecond"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
             <TextView
@@ -67,7 +67,7 @@
             <TextView
                 android:layout_weight="1"
                 android:gravity="center"
-                android:background="@color/colorSchedule1"
+                android:background="@color/colorSecond"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
             <TextView
@@ -108,7 +108,7 @@
                 android:text="二"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:background="@color/colorSchedule1"
+                android:background="@color/colorSecond"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
             <TextView
@@ -146,7 +146,7 @@
             <TextView
                 android:layout_weight="1"
                 android:gravity="center"
-                android:background="@color/colorSchedule1"
+                android:background="@color/colorSecond"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
             <TextView
@@ -186,7 +186,7 @@
                 android:text="三"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:background="@color/colorSchedule1"
+                android:background="@color/colorSecond"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
             <TextView
@@ -227,7 +227,7 @@
                 android:text="午休"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:background="@color/colorSchedule1"
+                android:background="@color/colorSecond"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
             <TextView
@@ -266,7 +266,7 @@
                 android:text="四"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:background="@color/colorSchedule1"
+                android:background="@color/colorSecond"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
             <TextView
@@ -305,7 +305,7 @@
             <TextView
                 android:layout_weight="1"
                 android:gravity="center"
-                android:background="@color/colorSchedule1"
+                android:background="@color/colorSecond"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
             <TextView
@@ -347,7 +347,7 @@
                 android:text="五"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:background="@color/colorSchedule1"
+                android:background="@color/colorSecond"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
             <TextView
@@ -387,7 +387,7 @@
             <TextView
                 android:layout_weight="1"
                 android:gravity="center"
-                android:background="@color/colorSchedule1"
+                android:background="@color/colorSecond"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
             <TextView

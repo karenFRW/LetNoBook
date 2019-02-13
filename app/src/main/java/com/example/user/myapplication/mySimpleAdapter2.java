@@ -22,9 +22,9 @@ public class mySimpleAdapter2 extends SimpleAdapter {
      *                 Maps contain the data for each row, and should include all the entries specified in
      *                 "from"
      * @param resource Resource identifier of a view layout that defines the views for this list
-     *                 item. The layout file should include at least those named views defined in "to"
+     *                 item1. The layout file should include at least those named views defined in "to"
      * @param from     A list of column names that will be added to the Map associated with each
-     *                 item.
+     *                 item1.
      * @param to       The views that should display column in the "from" parameter. These should all be
      *                 TextViews. The first N views in this list are given the values of the first N columns
      */
@@ -34,6 +34,7 @@ public class mySimpleAdapter2 extends SimpleAdapter {
     private String[] from;
     private int[] to;
     private Intent intent;
+
     public mySimpleAdapter2(Context context, ArrayList<HashMap<String, String>> data, int resource, String[] from, int[] to) {
         super(context, data, resource, from, to);
         this.context = context;
@@ -53,7 +54,7 @@ public class mySimpleAdapter2 extends SimpleAdapter {
     }
 
     public long getItemId(int position) {
-
+        //取得index
         return position;
     }
 
@@ -62,25 +63,34 @@ public class mySimpleAdapter2 extends SimpleAdapter {
         View v = super.getView(position, convertView, parent);
         final int p = position;
         TextView txtId = v.findViewById(R.id.txtId);
+        txtId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context
+                        , "這是 " + data.get(p) + " 同學"
+                        , Toast.LENGTH_SHORT).show();
+            }
+        });
         TextView txtItem = v.findViewById(R.id.txtItem);
         txtItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context
-                        , "點選了" + data.get(p)
-                        , Toast.LENGTH_LONG).show();
+                        , "這是 " + data.get(p) + " 同學"
+                        , Toast.LENGTH_SHORT).show();
             }
         });
-        ImageButton btnView = v.findViewById(R.id.btnView);
-        String stuId = data.get(p).get("txtId");
-        String stuName = data.get(p).get("txtName");
+        ImageButton btnView = v.findViewById(R.id.btnDiary);
+
         btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context
                         , "開啟 " + data.get(p).get("txtItem") + " 的日誌"
-                        , Toast.LENGTH_LONG).show();
+                        , Toast.LENGTH_SHORT).show();
                 intent = new Intent(context, ActivityTea_ViewDiary.class);
+                intent.putExtra(CDictionary.List_viewDiaryById, data.get(p).get("txtId"));
+                intent.putExtra(CDictionary.List_viewDiaryByName, data.get(p).get("txtItem"));
                 context.startActivity(intent);
                 Log.d("LetNoBook", "開啟 " + data.get(p).get("txtItem") + " 的日誌");
             }
@@ -90,11 +100,12 @@ public class mySimpleAdapter2 extends SimpleAdapter {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context
-                        , "開啟聯絡 " + data.get(p).get("txtItem") + " 家長頁面"
-                        , Toast.LENGTH_LONG).show();
-                intent = new Intent(context, ActivityTeaContact.class);
+                        , "聯絡 " + data.get(p).get("txtItem") + " 家長"
+                        , Toast.LENGTH_SHORT).show();
+                intent = new Intent(context, ActivityTea_Contact.class);
+                intent.putExtra(CDictionary.List_viewCommById, data.get(p).get("txtId"));
                 context.startActivity(intent);
-                Log.d("LetNoBook", "開啟聯絡 " + data.get(p).get("txtItem") + " 家長頁面");
+                Log.d("LetNoBook", "聯絡 " + data.get(p).get("txtItem") + " 家長");
             }
         });
         return  v;

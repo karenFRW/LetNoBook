@@ -5,17 +5,15 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class CStudentFactory {
-
     /* 宣告陣列存放資料
      * 宣告變數存放某筆資料的陣列位置
      * 新增 void 載入資料
      */
-    private ArrayList<CtStudent> list=new ArrayList<CtStudent>();
+    private ArrayList<CStudent> list=new ArrayList<CStudent>();
     private int position=0;
     private String jsonStr = new String();
 
@@ -38,11 +36,11 @@ public class CStudentFactory {
     public void MoveTo(int idx){//至第?筆
         position=idx;
     }
-    public CtStudent GetCurrent(){
+    public CStudent GetCurrent(){
         return list.get(position) ;
     }
-    public CtStudent[] GetAll(){//取全部筆數
-        return list.toArray(new CtStudent[list.size()]);
+    public CStudent[] GetAll(){//取全部筆數
+        return list.toArray(new CStudent[list.size()]);
     }
     public CStudentFactory(){
         LoadData();
@@ -55,13 +53,13 @@ public class CStudentFactory {
             @Override
             public void run() {
                 CHttpUrlConnection c = new CHttpUrlConnection();
-                jsonStr = c.getTable("tStudents");
-                Log.i("LetNoBook", "LoadData()_tStudents" + jsonStr);
+                jsonStr = c.getTable("institute/tStudents");
+                Log.i("LetNoBook_StuFactory", "LoadData()" + jsonStr);
 
                 Gson gson = null;
                 Type listType = new TypeToken<ArrayList<CClass>>() {}.getType();
-                ArrayList<CtStudent> jsonArr = gson.fromJson(jsonStr, listType);
-                for(CtStudent s:jsonArr)
+                ArrayList<CStudent> jsonArr = gson.fromJson(jsonStr, listType);
+                for(CStudent s:jsonArr)
                     list.add(s);
             }
         }.start();

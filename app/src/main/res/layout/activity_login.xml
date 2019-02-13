@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ActivityLogin"
-    android:background="@drawable/bg_pink_wlights">
+    android:background="@color/colorSecond">
 
     <ImageView
         android:layout_marginTop="50dp"
@@ -22,12 +22,14 @@
         android:layout_gravity="center"
         android:id="@+id/txtId"
         android:hint="請輸入帳號"
+        android:textColorHint="@color/colorPrimaryDark"
         android:layout_width="263dp"
         android:layout_height="wrap_content" />
     <EditText
         android:layout_gravity="center"
         android:id="@+id/txtPw"
         android:hint="請輸入密碼"
+        android:textColorHint="@color/colorPrimaryDark"
         android:layout_width="263dp"
         android:layout_height="wrap_content" />
     <LinearLayout
@@ -64,7 +66,7 @@
             android:text="登入"
             android:textSize="20dp"
             android:textColor="@color/colorAccent"
-            android:background="@android:color/transparent"
+            android:background="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"/>
@@ -73,7 +75,7 @@
             android:text="取消登入"
             android:textSize="20dp"
             android:textColor="@android:color/darker_gray"
-            android:background="@android:color/transparent"
+            android:background="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"/>

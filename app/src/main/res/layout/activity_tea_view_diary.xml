@@ -9,7 +9,7 @@
         android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="學生日誌"
+        android:text="學生首頁"
         android:textSize="20dp"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,7 +21,7 @@
     <LinearLayout
         android:id="@+id/dateArea"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle"
         tools:ignore="MissingConstraints">
@@ -35,6 +35,8 @@
 
         <TextView
             android:id="@+id/txtDate"
+            android:gravity="center"
+            android:textSize="20dp"
             android:textColor="@color/colorPrimaryDark"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -58,6 +60,7 @@
         tools:ignore="MissingConstraints" />
     <TextView
         android:id="@+id/txtDiary"
+        android:textSize="20dp"
         android:background="@drawable/txt_background1"
         android:layout_width="match_parent"
         android:layout_height="180dp"
@@ -70,13 +73,13 @@
         android:textColor="@color/colorPrimaryDark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@+id/txtDiary"
         tools:ignore="MissingConstraints" />
     <TextView
         android:id="@+id/txtReply"
+        android:textSize="20dp"
         android:layout_width="match_parent"
-        android:textColor="@color/colorAccent"
         android:background="@drawable/txt_background1"
         android:layout_height="180dp"
         app:layout_constraintTop_toBottomOf="@+id/txtT"

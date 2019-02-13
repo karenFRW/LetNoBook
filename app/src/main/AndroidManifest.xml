@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivityTea_ViewDiary"></activity>
+        <activity android:name=".ActivityPar_ViewLocation"></activity>
+        <activity android:name=".ActivityPar_ViewDiary" />
+        <activity android:name=".ActivityTea_ViewDiary" />
         <activity android:name=".ActivitySchedule_202" />
         <activity android:name=".ActivitySchedule_201" />
         <activity android:name=".ActivitySchedule_200" />
@@ -25,25 +27,21 @@
         <activity android:name=".welcomeAct">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity2" />
-        <activity android:name=".Activity3" />
-        <activity android:name=".Activity4" />
         <activity android:name=".ActivityLogin" />
         <activity android:name=".ActivityStu" />
         <activity android:name=".ActivityTea" />
-        <activity android:name=".ActivityPAR" />
+        <activity android:name=".ActivityPar" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".ActivityTeaInfo" />
-        <activity android:name=".ActivityTeaContact" />
-        <activity android:name=".ActivityStuClassSyllabus" />
-        <activity android:name=".ActivityStuInfo" />
-        <activity android:name=".ActivityStuContact" />
-        <activity android:name=".ActivityStuDiary" />
-        <activity android:name=".ActivityParContact" />
-        <activity android:name=".ActivityParInfo" />
+        <activity android:name=".ActivityTea_Info" />
+        <activity android:name=".ActivityTea_Contact" />
+        <activity android:name=".ActivityStu_Info" />
+        <activity android:name=".ActivityStu_Contact" />
+        <activity android:name=".ActivityPar_Contact" />
+        <activity android:name=".ActivityPar_Info" />
         <activity android:name=".ActivityParChat" />
         <activity android:name=".ActivityGetPw" />
         <activity android:name=".ActivitySetting" />

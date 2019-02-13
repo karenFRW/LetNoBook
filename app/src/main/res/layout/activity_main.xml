@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,28 +8,68 @@
     android:orientation="vertical"
     tools:context=".MainActivity"
     android:background="@drawable/main_bg">
-
+    <!--<android.support.constraint.ConstraintLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+        <!--<GridLayout-->
+            <!--android:id="@+id/btnG"-->
+            <!--android:layout_width="250dp"-->
+            <!--android:layout_height="250dp"-->
+            <!--android:columnCount="2"-->
+            <!--android:rowCount="2"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--app:layout_constraintLeft_toRightOf="parent"-->
+            <!--app:layout_constraintRight_toLeftOf="parent"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--tools:ignore="MissingConstraints">-->
+            <!--<ImageButton-->
+                <!--android:tooltipText="校園公告"-->
+                <!--android:id="@+id/btn校園公告"-->
+                <!--android:layout_width="125dp"-->
+                <!--android:layout_height="125dp"-->
+                <!--android:src="@drawable/i_news"-->
+                <!--android:background="@android:color/transparent"/>-->
+            <!--<ImageButton-->
+                <!--android:tooltipText="聯絡資訊"-->
+                <!--android:id="@+id/btn聯絡資訊"-->
+                <!--android:layout_width="125dp"-->
+                <!--android:layout_height="125dp"-->
+                <!--android:src="@drawable/i_info"-->
+                <!--android:background="@android:color/transparent"/>-->
+            <!--<ImageButton-->
+                <!--android:tooltipText="校園簡介"-->
+                <!--android:id="@+id/btn校園簡介"-->
+                <!--android:layout_width="125dp"-->
+                <!--android:layout_height="125dp"-->
+                <!--android:src="@drawable/i_contacts"-->
+                <!--android:background="@android:color/transparent"/>-->
+            <!--<ImageButton-->
+                <!--android:tooltipText="設定"-->
+                <!--android:id="@+id/btn設定"-->
+                <!--android:layout_width="125dp"-->
+                <!--android:layout_height="125dp"-->
+                <!--android:src="@drawable/i_setting"-->
+                <!--android:background="@android:color/transparent"/>-->
+        <!--</GridLayout>-->
+    <!--</android.support.constraint.ConstraintLayout>-->
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/fabLogin"-->
+        <!--android:longClickable="true"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="20dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--app:fab_showAnimation="@anim/fab_scale_up"-->
+        <!--android:backgroundTint="@color/colorAccent"-->
+        <!--android:src="@drawable/i_user_32x32"-->
+        <!--app:elevation="12dp"-->
+        <!--app:fabSize="normal"-->
+        <!--app:pressedTranslationZ="12dp"-->
+        <!--tools:ignore="MissingConstraints" />-->
 
     <com.hitomi.cmlibrary.CircleMenu
         android:id="@+id/circle_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-
         android:layout_alignParentTop="true" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="154dp"
-        android:layout_marginLeft="154dp"
-        android:layout_marginTop="96dp"
-        android:textSize="35dp"
-        android:text="登入"
-        android:visibility="invisible"/>
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
