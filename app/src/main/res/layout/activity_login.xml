@@ -66,7 +66,7 @@
             android:text="登入"
             android:textSize="20dp"
             android:textColor="@color/colorAccent"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/custom_ripple2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"/>
@@ -75,7 +75,7 @@
             android:text="取消登入"
             android:textSize="20dp"
             android:textColor="@android:color/darker_gray"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/custom_ripple2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"/>
@@ -91,7 +91,7 @@
             android:id="@+id/btnForgotIdPw"
             android:text="忘記密碼"
             android:textColor="@android:color/darker_gray"
-            android:background="@android:color/transparent"
+            android:background="@drawable/custom_ripple"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"/>

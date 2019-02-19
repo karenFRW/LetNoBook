@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,34 +8,36 @@
     tools:context=".welcomeAct">
 
 
-
-    <LinearLayout
+    <TextView
+        android:textSize="50dp"
+        android:gravity="center"
+        android:text="LetNoBook"
+        android:id="@+id/txtTitle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/avi"/>
 
-        <com.wang.avi.AVLoadingIndicatorView
-            android:id="@+id/avi"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            style="@style/AVLoadingIndicatorView.Large"
-            android:visibility="visible"
-            app:indicatorName="PacmanIndicator"
-            app:indicatorColor="@color/colorPrimaryDark"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <!--<com.airbnb.lottie.LottieAnimationView-->
-            <!--android:id="@+id/animation_view"-->
-            <!--android:layout_width="64dp"-->
-            <!--android:layout_height="64dp"-->
-            <!--app:lottie_fileName="idea_bulb.json"-->
-            <!--app:lottie_loop="false"-->
-            <!--app:lottie_repeatCount="1"-->
-            <!--app:lottie_autoPlay="true"   />-->
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/avi"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        style="@style/AVLoadingIndicatorView.Large"
+        android:visibility="visible"
+        app:indicatorName="PacmanIndicator"
+        app:indicatorColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <!--<com.airbnb.lottie.LottieAnimationView-->
+    <!--android:id="@+id/animation_view"-->
+    <!--android:layout_width="64dp"-->
+    <!--android:layout_height="64dp"-->
+    <!--app:lottie_fileName="idea_bulb.json"-->
+    <!--app:lottie_loop="false"-->
+    <!--app:lottie_repeatCount="1"-->
+    <!--app:lottie_autoPlay="true"   />-->
 
-
-    </LinearLayout>
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

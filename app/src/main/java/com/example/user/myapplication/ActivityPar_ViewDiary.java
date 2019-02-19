@@ -14,17 +14,15 @@ import android.widget.Toast;
 import com.github.clans.fab.FloatingActionButton;
 
 public class ActivityPar_ViewDiary extends AppCompatActivity {
-    private FloatingActionButton fabSchedule, fabInfo, fabComm;
-    private TextView txtTop, txtDate;
+    private FloatingActionButton fabSchedule, fabInfo;
+    private TextView txtTop, txtDate, txtDiaryId, txtStuId;
     private Button btnPreDay, btnNextDay;
     private TextView txtDiary, txtReply;
-    private Button btn班級課表, btn通知事項, btn親師留言;
     private CDiaryFactory diaryFactory;
     private Intent intent;
-    private SharedPreferences table = null;
-    SharedPreferences.Editor row = null;
-    public static String studentId, studentName;
-    public static String classId;
+    public static String studentId = new String(), studentName = new String();
+    public static String classId = new String();
+
 
 
     @Override
@@ -32,22 +30,23 @@ public class ActivityPar_ViewDiary extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_par__view_diary);
 
-        Intent intent = getIntent();
+        //@學生編號 @學生姓名 @學生班級編號 從接口 mySimpleAdapterP 傳過來
+        intent = getIntent();
         studentId = intent.getStringExtra(CDictionary.List_viewDiaryById);
         studentName = intent.getStringExtra(CDictionary.List_viewDiaryByName);
-        classId = intent.getStringExtra(CDictionary.List_viewInfoByClassId);
+        classId = intent.getStringExtra(CDictionary.List_viewInfoByClassId); //再傳去通知事項當參數
+
         diaryFactory = new CDiaryFactory();
 
         InitialComponent();
     }
 
     private void InitialComponent() {
-        fabSchedule = findViewById(R.id.fabSchedule);
+
         fabInfo = findViewById(R.id.fabInfo);
-        fabComm = findViewById(R.id.fabComm);
-        fabSchedule.setOnClickListener(fabSchedule_Click);
         fabInfo.setOnClickListener(fabInfo_Click);
-        fabComm.setOnClickListener(fabComm_Click);
+        txtDiaryId = findViewById(R.id.txtDiaryId);
+        txtStuId = findViewById(R.id.txtStuId);
         txtTop = findViewById(R.id.txtTop);
         txtTop.setText(studentName + " 寶貝首頁");
         txtDate = findViewById(R.id.txtDate);
@@ -64,66 +63,49 @@ public class ActivityPar_ViewDiary extends AppCompatActivity {
     private View.OnClickListener btnPreDay_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            diaryFactory.MoveToPrevious();
-            CDiary data = diaryFactory.getCurrent();
-            DisplayDiary(data);
-            Log.d("LetNoBook_ParViewDiary", "btnNextDay_Clicked");
+            if(diaryFactory.getSize()<=0){
+                Toast.makeText(ActivityPar_ViewDiary.this, "系統整理中, 請稍後再查詢", Toast.LENGTH_LONG);
+                Log.d("LetNoBook_PI", "日誌size<=0");
+            }else {
+                diaryFactory.MoveToPrevious();
+                CDiary data = diaryFactory.getCurrent();
+                DisplayDiary(data);
+                Toast.makeText(ActivityPar_ViewDiary.this, "載入中", Toast.LENGTH_LONG);
+                Log.d("LetNoBook_PVD", "btnNextDay_Clicked");
+            }
+
         }
     };
 
     private View.OnClickListener btnNextDay_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            diaryFactory.MoveToNext();
-            CDiary data = diaryFactory.getCurrent();
-            DisplayDiary(data);
-            Log.d("LetNoBook_ParViewDiary", "btnNextDay_Clicked");
+            if(diaryFactory.getSize()<=0){
+                Toast.makeText(ActivityPar_ViewDiary.this, "系統整理中, 請稍後再查詢", Toast.LENGTH_LONG);
+                Log.d("LetNoBook_PVD", "日誌size<=0");
+            }else {
+                diaryFactory.MoveToNext();
+                CDiary data = diaryFactory.getCurrent();
+                DisplayDiary(data);
+                Toast.makeText(ActivityPar_ViewDiary.this, "載入中", Toast.LENGTH_LONG);
+                Log.d("LetNoBook_PVD", "btnNextDay_Clicked"+data.toString());
+            }
+
         }
     };
 
     private void DisplayDiary(CDiary d) {
+        int y = d.getF日誌編號();
+        int k = d.getF學生編號();
+        txtDiaryId.setText(String.valueOf(y));
+        txtStuId.setText(String.valueOf(k));
         txtDate.setText(d.getF日期());
         txtDiary.setText(d.getF學生日誌文字());
         txtReply.setText(d.getF日誌批改());
     }
-    private View.OnClickListener fabSchedule_Click = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            intent = getIntent();
-            classId = intent.getStringExtra(CDictionary.List_viewInfoByClassId);
-            if(classId != null){
-                Integer ci = Integer.valueOf(classId);
-                switch (ci){
-                    case 403:
-                        intent = new Intent(ActivityPar_ViewDiary.this, ActivitySchedule_200.class);
-                        startActivity(intent);
-                        Log.d("LetNoBook_ParViewDiary", "班級課表_403_1年1班");
-                        break;
-                    case 401:
-                        intent = new Intent(ActivityPar_ViewDiary.this, ActivitySchedule_201.class);
-                        startActivity(intent);
-                        Log.d("LetNoBook_ParViewDiary", "班級課表_401_1年2班");
-                        break;
-                    case 402:
-                        intent = new Intent(ActivityPar_ViewDiary.this, ActivitySchedule_202.class);
-                        startActivity(intent);
-                        Log.d("LetNoBook_ParViewDiary", "班級課表_402_1年3班");
-                        break;
-                    default:
-                        Log.d("LetNoBook_ParViewDiary", "查無班級課表");
-                        Toast.makeText(getApplicationContext()
-                                , "查無班級課表"
-                                , Toast.LENGTH_LONG).show();
-                        break;
-                }
-            }
-        }
-    };
     private View.OnClickListener fabInfo_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            intent = getIntent();
-            classId = intent.getStringExtra(CDictionary.List_viewInfoByClassId);
             String classStr = new String();
             switch (classId){
                 case "403":
@@ -143,19 +125,9 @@ public class ActivityPar_ViewDiary extends AppCompatActivity {
 
             intent = new Intent(ActivityPar_ViewDiary.this, ActivityPar_Info.class);
             intent.putExtra(CDictionary.List_viewInfoByClassId, classId);
+            intent.putExtra(CDictionary.List_viewInfoByClassName, classStr);
             startActivity(intent);
             Log.d("LetNoBook_ParViewDiary", "開啟 " + classStr + " 的通知事項");
-        }
-    };
-    private View.OnClickListener fabComm_Click = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            intent = getIntent();
-            studentId =  intent.getStringExtra(CDictionary.List_viewDiaryById);
-            intent = new Intent(ActivityPar_ViewDiary.this, ActivityPar_Contact.class);
-            intent.putExtra(CDictionary.List_viewCommById, studentId);
-            startActivity(intent);
-            Log.d("LetNoBook_ParViewDiary", "Go親師留言");
         }
     };
 }

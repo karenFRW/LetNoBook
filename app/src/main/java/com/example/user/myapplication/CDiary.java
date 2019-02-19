@@ -1,5 +1,11 @@
 package com.example.user.myapplication;
 
+import com.google.gson.JsonParser;
+
+import org.json.JSONTokener;
+
+import java.util.Map;
+
 public class CDiary {
 
 
@@ -14,13 +20,34 @@ public class CDiary {
 
     private int f日誌編號;
     private String f學生日誌文字;
-    private Object f學生日誌照片;
+    private String f學生日誌照片;
     private String f日誌批改;
     private String f日期;
     private int f學生編號;
 
-    public CDiary(String f學生日誌文字, String f日誌批改, String f日期, int f學生編號) {
+
+
+    @Override
+    public String toString() {
+        return "[{" +
+                "\"f日誌編號\":" +f日誌編號 +
+                ", \"f學生日誌文字\":\"" +f學生日誌文字 + "\"" +
+                ", \"f學生日誌照片\":\"" + f學生日誌照片 +"\""+
+                ", \"f日誌批改\":\"" + f日誌批改 + "\"" +
+                ", \"f日期\":\""+ f日期 + "\""+
+                ", \"f學生編號\":" + f學生編號 +
+                "}]";
+    }
+
+    public CDiary() {
+        super();
+    }
+
+    public CDiary(int f日誌編號, String f學生日誌文字, String f學生日誌照片, String f日誌批改, String f日期, int f學生編號) {
+        super();
+        this.f日誌編號 = f日誌編號;
         this.f學生日誌文字 = f學生日誌文字;
+        this.f學生日誌照片 = f學生日誌照片;
         this.f日誌批改 = f日誌批改;
         this.f日期 = f日期;
         this.f學生編號 = f學生編號;
@@ -42,11 +69,11 @@ public class CDiary {
         this.f學生日誌文字 = f學生日誌文字;
     }
 
-    public Object getF學生日誌照片() {
+    public String getF學生日誌照片() {
         return f學生日誌照片;
     }
 
-    public void setF學生日誌照片(Object f學生日誌照片) {
+    public void setF學生日誌照片(String f學生日誌照片) {
         this.f學生日誌照片 = f學生日誌照片;
     }
 

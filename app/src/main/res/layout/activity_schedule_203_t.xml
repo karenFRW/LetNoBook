@@ -25,6 +25,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="一"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -39,6 +40,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="605\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -46,6 +48,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="605\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -53,6 +56,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="603\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -60,6 +64,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="603\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -105,6 +110,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="二"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -119,6 +125,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="601\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -126,6 +133,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="601\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -133,6 +141,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="604\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -140,6 +149,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="604\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -153,6 +163,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="602\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -160,6 +171,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="602\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -187,6 +199,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="三"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -213,6 +226,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="603\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -220,6 +234,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="603\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -227,6 +242,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="午休"
+                android:textSize="30dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:background="@color/colorSecond"
@@ -266,6 +282,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="四"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -280,6 +297,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="602\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -287,6 +305,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="602\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -318,6 +337,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="604\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -325,6 +345,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="604\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -346,6 +367,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="五"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -372,6 +394,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="605\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -379,6 +402,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="605\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -392,6 +416,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="601\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -399,6 +424,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="601\n自然"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"

@@ -25,6 +25,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="一"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -32,6 +33,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="兒童朝會"
+                android:textSize="18dp"
                 android:textColor="@android:color/holo_blue_dark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -39,6 +41,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="國語"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -46,6 +49,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="本土語言"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -53,6 +57,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="生活"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -60,6 +65,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="英文"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -105,6 +111,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="二"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -112,6 +119,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="教師朝會"
+                android:textSize="18dp"
                 android:textColor="@android:color/holo_blue_dark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -119,6 +127,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="數學"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -126,6 +135,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="健康"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -133,6 +143,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="綜合"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -140,6 +151,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="綜合"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -153,6 +165,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="生活"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -160,6 +173,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="體育"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -167,6 +181,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="國語"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -188,6 +203,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="三"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -195,6 +211,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="資源回收"
+                android:textSize="18dp"
                 android:textColor="@android:color/holo_blue_dark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -202,6 +219,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="生活"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -209,6 +227,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="生活"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -216,6 +235,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="數學"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -223,6 +243,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="國語"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -230,6 +251,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="午休"
+                android:textSize="30dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:background="@color/colorSecond"
@@ -269,6 +291,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="四"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -276,6 +299,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="說故事"
+                android:textSize="18dp"
                 android:textColor="@android:color/holo_blue_dark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -283,6 +307,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="英文"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -290,6 +315,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="閱讀"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -297,6 +323,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="國語"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -304,6 +331,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="生活"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -349,6 +377,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="五"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -356,6 +385,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="晨光"
+                android:textSize="18dp"
                 android:textColor="@android:color/holo_blue_dark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -363,6 +393,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="數學"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -370,6 +401,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="體育"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -377,6 +409,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="國語"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -384,6 +417,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="生活"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"

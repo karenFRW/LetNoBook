@@ -1,6 +1,5 @@
 package com.example.user.myapplication;
 
-import android.content.Intent;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -31,10 +30,10 @@ public class CInfoFactory {
                 }else if((intUserId>=200) && (intUserId <=400)){
                     //登入者是導師或家長
                     //判斷此學生id從哪個Activity讀取
-                    if(ActivityTea_ViewDiary.classId != null){
-                        userClsId = ActivityTea_ViewDiary.classId;
+                    if(ActivityTea_xxx.classId != null){
+                        userClsId = ActivityTea_xxx.classId;
                     }else {
-                        userClsId = ActivityPar_ViewDiary.classId;
+                        userClsId = ActivityPar_Info.clsId;
                     }
                 }
 
@@ -44,27 +43,51 @@ public class CInfoFactory {
                     JSONArray jArray = new JSONArray(jsonStr);
                     for(int i=0;i<jArray.length();i++){
                         JSONObject info = jArray.getJSONObject(i);
+                        int fInfoId = Integer.parseInt(info.getString("fInfoId"));
                         String d = info.getString("f日期");
                         String fDate = d.substring(0, 10);
-                        String hw = info.getString("f作業通知");
-                        String staff = info.getString("f用品通知");
-                        String other = info.getString("f其他通知");
+                        String sj = info.getString("f科目");
+                        String h = info.getString("f作業通知");
+                        String sf = info.getString("f用品通知");
+                        String o = info.getString("f其他通知");
+                        String hw;
+                        if((h.equals("")) || (h.equals(null)) || (h.equals("null")))
+                            hw = "空白";
+                        else
+                            hw = h;
+
+                        String staff;
+                        if((sf.equals("")) || (sf.equals(null)) || (sf.equals("null")))
+                            staff = "空白";
+                        else
+                            staff = sf;
+
+                        String other;
+                        if((o.equals("")) || (o.equals(null)) || (o.equals("null")))
+                            other = "空白";
+                        else
+                            other = o;
+
                         String cc = info.getString("fClassId");
                         String tt = info.getString("f老師編號");
-                        Integer cd = 0, tn = 0;
+                        int cd = 0, tn = 0;
                         if(cc.isEmpty() || cc.equals(null) || cc.equals("null"))
                             cd = 0;
                         else
-                        cd = Integer.parseInt(cc);
+                            cd = Integer.parseInt(cc);
                         if(tt.isEmpty() || tt.equals(null) || tt.equals("null"))
                             tn = 0;
                         else
                             tn = Integer.parseInt(tt);
 
-                        Log.d("LetNoBook", "selectedCls" + userClsId + "cc" + cc + "tt" + tt);
+                        Log.d("LetNoBook","登入者C:"+userClsId+",jSonC:"+cc);
+                        Log.d("LetNoBook", "including=" + fDate + "," +sj + "," +hw + "," +staff + "," +other + "," + cd + "," + tn);
 
                         if(userClsId.equals(cc)){
-                            CInfo cinfo = new CInfo(fDate,hw,staff,other, Integer.valueOf(cc),Integer.valueOf(tt));
+                            //(int fInfoId, String f日期, String f科目,
+                            // String f作業通知, String f用品通知,
+                            // String f其他通知, int fClassId, int f老師編號)
+                            CInfo cinfo = new CInfo(fInfoId,fDate,sj,hw,staff,other,cd,tn);
                             list.add(cinfo);
                             Log.d("LetNoBook","list.size():" +list.size());
                         }
@@ -80,6 +103,11 @@ public class CInfoFactory {
         Load();
         Log.d("LetNoBook", "CInfoFactory()");
     }
+
+    public void MoveToFirst(){
+        position=0;
+    }
+
     public void MoveToPrevious(){
         position--;
         if(position<0)
@@ -102,5 +130,8 @@ public class CInfoFactory {
     }
     public CInfo[] getAll(){
         return list.toArray(new CInfo[list.size()]);
+    }
+    public int getSize(){
+        return list.size();
     }
 }

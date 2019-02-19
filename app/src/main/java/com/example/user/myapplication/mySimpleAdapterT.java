@@ -13,21 +13,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class mySimpleAdapter2 extends SimpleAdapter {
-    /**
-     * Constructor
-     *
-     * @param context  The context where the View associated with this SimpleAdapter is running
-     * @param data     A List of Maps. Each entry in the List corresponds to one row in the list. The
-     *                 Maps contain the data for each row, and should include all the entries specified in
-     *                 "from"
-     * @param resource Resource identifier of a view layout that defines the views for this list
-     *                 item1. The layout file should include at least those named views defined in "to"
-     * @param from     A list of column names that will be added to the Map associated with each
-     *                 item1.
-     * @param to       The views that should display column in the "from" parameter. These should all be
-     *                 TextViews. The first N views in this list are given the values of the first N columns
-     */
+public class mySimpleAdapterT extends SimpleAdapter {
     private Context context;
     private ArrayList<HashMap<String, String>> data;
     private int resource;
@@ -35,7 +21,7 @@ public class mySimpleAdapter2 extends SimpleAdapter {
     private int[] to;
     private Intent intent;
 
-    public mySimpleAdapter2(Context context, ArrayList<HashMap<String, String>> data, int resource, String[] from, int[] to) {
+    public mySimpleAdapterT(Context context, ArrayList<HashMap<String, String>> data, int resource, String[] from, int[] to) {
         super(context, data, resource, from, to);
         this.context = context;
         this.data = data;
@@ -62,26 +48,28 @@ public class mySimpleAdapter2 extends SimpleAdapter {
     public View getView(final int position, final View convertView, final ViewGroup parent) {
         View v = super.getView(position, convertView, parent);
         final int p = position;
+
         TextView txtId = v.findViewById(R.id.txtId);
         txtId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context
-                        , "這是 " + data.get(p) + " 同學"
+                        ,  data.get(p).get("txtItem") + " 同學, 學生編號:"+data.get(p).get("txtId")
                         , Toast.LENGTH_SHORT).show();
             }
         });
+
         TextView txtItem = v.findViewById(R.id.txtItem);
         txtItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context
-                        , "這是 " + data.get(p) + " 同學"
+                        , data.get(p).get("txtItem") + " 同學, 學生編號:"+data.get(p).get("txtId")
                         , Toast.LENGTH_SHORT).show();
             }
         });
-        ImageButton btnView = v.findViewById(R.id.btnDiary);
 
+        ImageButton btnView = v.findViewById(R.id.btnDiary);
         btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,6 +83,21 @@ public class mySimpleAdapter2 extends SimpleAdapter {
                 Log.d("LetNoBook", "開啟 " + data.get(p).get("txtItem") + " 的日誌");
             }
         });
+
+        ImageButton btnLocation = v.findViewById(R.id.btnLocation);
+        btnLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context
+                        , "查看 " + data.get(p).get("stu_name") + " 的位置"
+                        , Toast.LENGTH_LONG).show();
+                intent = new Intent(context, ActivityPar_ViewLocation.class);
+                intent.putExtra(CDictionary.List_viewLocationByName, data.get(p).get("stu_name"));
+                context.startActivity(intent);
+                Log.d("LetNoBook", "查看 " + data.get(p).get("stu_name") + " 的位置");
+            }
+        });
+
         ImageButton btnContact = v.findViewById(R.id.btnContact);
         btnContact.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +107,8 @@ public class mySimpleAdapter2 extends SimpleAdapter {
                         , Toast.LENGTH_SHORT).show();
                 intent = new Intent(context, ActivityTea_Contact.class);
                 intent.putExtra(CDictionary.List_viewCommById, data.get(p).get("txtId"));
+                Log.d("LetNoBook", "聯絡 " + data.get(p).get("txtId") + " 家長");
+                intent.putExtra(CDictionary.List_viewCommByName, data.get(p).get("txtItem"));
                 context.startActivity(intent);
                 Log.d("LetNoBook", "聯絡 " + data.get(p).get("txtItem") + " 家長");
             }

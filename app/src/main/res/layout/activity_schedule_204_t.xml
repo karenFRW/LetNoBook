@@ -25,6 +25,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="一"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -45,6 +46,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="602\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -52,6 +54,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="601\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -59,6 +62,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="101\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -72,6 +76,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="603\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -105,6 +110,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="二"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -125,6 +131,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="404\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -138,6 +145,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="405\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -151,6 +159,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="606\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -158,6 +167,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="401\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -165,6 +175,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="605\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -186,6 +197,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="三"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -206,6 +218,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="604\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -213,6 +226,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="402\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -220,6 +234,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="607\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -227,6 +242,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="午休"
+                android:textSize="30dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:background="@color/colorSecond"
@@ -266,6 +282,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="四"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -280,6 +297,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="605\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -287,6 +305,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="603\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -294,6 +313,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="602\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -301,6 +321,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="606\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -314,6 +335,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="601\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -347,6 +369,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="五"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -367,6 +390,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="403\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -374,6 +398,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="604\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -381,6 +406,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="103\n音樂"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"

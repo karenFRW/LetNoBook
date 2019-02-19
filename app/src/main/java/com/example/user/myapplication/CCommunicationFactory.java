@@ -20,6 +20,7 @@ public class CCommunicationFactory {
                 //取資料表
                 CHttpUrlConnection c = new CHttpUrlConnection();
                 jsonStr = c.getTable("institute/tCommunications");
+
                 String userId = ActivityLogin.user;
                 Integer intUserId = Integer.valueOf(userId);
 
@@ -28,33 +29,49 @@ public class CCommunicationFactory {
                 if(intUserId<200){
                     s = userId;
                 }else{
-                    if(ActivityTea_ViewDiary.studentId == null){
-                        s = ActivityPar_ViewDiary.studentId;
+                    if(ActivityTea_Contact.stuId==null){
+                        s = ActivityPar_Contact.studentId;
                     }else {
-                        s = ActivityTea_ViewDiary.studentId;
+                        s = ActivityTea_Contact.stuId;
                     }
                 }
-
+                Log.d("LetNoBook", "取Ps:"+ActivityPar_Contact.studentId);
+                Log.d("LetNoBook", "取Ts:"+ActivityTea_Contact.stuId);
+                Log.d("LetNoBook", "取Us:"+ActivityLogin.user);
+                list.clear();
                 //解析json
                 try {
                     JSONArray jArray = new JSONArray(jsonStr);
                     for (int i=0;i<jArray.length();i++){
                         JSONObject jo = jArray.getJSONObject(i);
+                        String fd = jo.getString("f交流編號");
+                        Log.d("LetNoBook", "取fd:"+fd);
+                        int iId = Integer.parseInt(fd);
                         String d = jo.getString("f日期");
+                        Log.d("LetNoBook", "取d:"+d);
                         String fDate = d.substring(0, 10);
                         String tMsg = jo.getString("f老師交代事項");
+                        Log.d("LetNoBook", "取fd:"+fd);
                         String id = jo.getString("f學生編號");
+                        Log.d("LetNoBook", "取id:"+id);
                         Boolean isSign = jo.getBoolean("f家長簽名");
+                        Log.d("LetNoBook", "取isSign:"+isSign);
                         String cls = jo.getString("fClassId");
+                        Log.d("LetNoBook", "取cls:"+cls);
                         String pMsg = jo.getString("f家長交代事項");
 
-                        if(tMsg.equals(null)|| tMsg.equals("null"))
+                        if(tMsg.equals(null) || tMsg.equals("null"))
                             tMsg = "空白";
                         if(pMsg.equals(null)|| pMsg.equals("null"))
                             pMsg = "空白";
-
+                        Log.d("LetNoBook", "取tMsg:"+tMsg);
+                        Log.d("LetNoBook", "取pMsg:"+pMsg);
                         if(id.equals(s)){
-                            CCommunication cm = new CCommunication(fDate,tMsg,pMsg,Integer.valueOf(s),isSign,Integer.valueOf(cls));
+                            //(int f交流編號, String f日期, String f老師交代事項,
+                            // String f家長交代事項, int f學生編號,
+                            // boolean f家長簽名, int fClassId)
+                            CCommunication cm = new CCommunication(iId,fDate,tMsg,pMsg,Integer.valueOf(s),isSign,Integer.valueOf(cls));
+                            Log.d("LetNoBook", "取:"+cm.toString());
                             list.add(cm);
                             Log.d("LetNoBook", "size():" + list.size());
                         }
@@ -70,6 +87,9 @@ public class CCommunicationFactory {
         Load();
         Log.d("LetNoBook", "CCommunicationFactory()");
     }
+    public void MoveToFirst(){
+        position=0;
+    }
     public void MoveToPrevious(){
         position--;
         if(position<0)
@@ -78,7 +98,7 @@ public class CCommunicationFactory {
     public void MoveToNext(){
         position++;
         if(position>=list.size()){
-            position=list.size()-1;
+            MoveToLast();
         }
     }
     public void MoveToLast(){

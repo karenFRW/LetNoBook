@@ -13,15 +13,23 @@ public class CInfo {
      */
 
 
+    private int fInfoId;
     private String f日期;
+    private String f科目;
     private String f作業通知;
     private String f用品通知;
     private String f其他通知;
     private int fClassId;
     private int f老師編號;
 
-    public CInfo(String f日期, String f作業通知, String f用品通知, String f其他通知, int fClassId, int f老師編號) {
+    public CInfo(){
+        super();
+    }
+
+    public CInfo(int fInfoId, String f日期, String f科目, String f作業通知, String f用品通知, String f其他通知, int fClassId, int f老師編號) {
+        this.fInfoId = fInfoId;
         this.f日期 = f日期;
+        this.f科目 = f科目;
         this.f作業通知 = f作業通知;
         this.f用品通知 = f用品通知;
         this.f其他通知 = f其他通知;
@@ -29,6 +37,13 @@ public class CInfo {
         this.f老師編號 = f老師編號;
     }
 
+    public int getfInfoId() {
+        return fInfoId;
+    }
+
+    public void setfInfoId(int fInfoId) {
+        this.fInfoId = fInfoId;
+    }
 
     public String getF日期() {
         return f日期;
@@ -36,6 +51,14 @@ public class CInfo {
 
     public void setF日期(String f日期) {
         this.f日期 = f日期;
+    }
+
+    public String getF科目() {
+        return f科目;
+    }
+
+    public void setF科目(String f科目) {
+        this.f科目 = f科目;
     }
 
     public String getF作業通知() {

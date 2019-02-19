@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.user.myapplication">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name="android.support.multidex.MultiDexApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,7 +17,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivityPar_ViewLocation"></activity>
+        <activity android:name=".ActivityTea_Info"></activity>
+        <activity android:name=".ActivityTea_Info_post" />
+        <activity android:name=".ActivityTea_Info_put" />
+        <activity android:name=".ActivityTea_ViewLocation" />
+        <activity android:name=".ActivityPar_KidsLocation" />
+        <activity android:name=".ActivityTea_KidsLocation" />
+        <activity android:name=".ActivityTea_Diary_edit" />
+        <activity android:name=".ActivityTea_Contact_edit" />
+        <activity android:name=".ActivityStu_Diary_edit" />
+        <activity android:name=".ActivityPar_ViewLocation" />
         <activity android:name=".ActivityPar_ViewDiary" />
         <activity android:name=".ActivityTea_ViewDiary" />
         <activity android:name=".ActivitySchedule_202" />
@@ -36,15 +50,17 @@
         <activity android:name=".ActivityTea" />
         <activity android:name=".ActivityPar" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".ActivityTea_Info" />
+        <activity android:name=".ActivityTea_xxx" />
         <activity android:name=".ActivityTea_Contact" />
         <activity android:name=".ActivityStu_Info" />
         <activity android:name=".ActivityStu_Contact" />
         <activity android:name=".ActivityPar_Contact" />
         <activity android:name=".ActivityPar_Info" />
-        <activity android:name=".ActivityParChat" />
         <activity android:name=".ActivityGetPw" />
-        <activity android:name=".ActivitySetting" />
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyCb-_0yCxAIxZ52e1glWiOlKNAqSypcV4s" />
     </application>
 
 </manifest>

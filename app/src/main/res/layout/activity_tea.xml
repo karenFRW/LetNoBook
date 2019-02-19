@@ -1,98 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorSecond"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/txtTitle"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:text="老師首頁"
+            android:id="@+id/txtTitle"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:textSize="30dp"
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"/>
+        <Button
+            android:id="@+id/btnKids"
+            android:text="查看學生們的位置"
+            android:textSize="20dp"
+            android:textColor="@color/colorPrimary"
+            android:shadowColor="@color/colorAccent"
+            android:background="@drawable/custom_ripple"
+            app:layout_constraintTop_toBottomOf="@id/listView"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints" />
+        <LinearLayout
+            android:id="@+id/lyMain"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/listView"
+            tools:ignore="MissingConstraints">
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:text="我的班級學生"
+                    android:id="@+id/txtSubTitle"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:ignore="MissingConstraints" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:text="日誌"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:text="位置"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:text="家長"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </ListView>
+
+    </android.support.constraint.ConstraintLayout>
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/fabMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:textSize="20dp"
-        android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"/>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/listView"
-        tools:ignore="MissingConstraints">
-        <TextView
-            android:text="我的班級學生"
-            android:layout_weight="1"
-            android:id="@+id/txtSubTitle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:ignore="MissingConstraints" />
-        <TextView
-            android:text="日誌"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:layout_marginLeft="45dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-        <TextView
-            android:text="家長"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </ListView>
-
-    <LinearLayout
-        android:id="@+id/btnGroup"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent">
-        <Button
-            android:layout_weight="1"
-            android:id="@+id/btn老師班級課表"
-            android:textColor="@android:color/darker_gray"
-            android:background="@color/colorPrimary"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        app:menu_fab_size="normal"
+        app:menu_animationDelayPerItem="50"
+        app:menu_labels_position="left"
+        android:elevation="12dp"
+        app:menu_colorNormal="@color/colorViolet"
+        android:src="@mipmap/ic_launcher_round">
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fabCS"
+            app:fab_label="班級課表"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="班級課表" />
-
-        <Button
-            android:layout_weight="1"
-            android:id="@+id/btn老師授課課表"
-            android:textColor="@android:color/darker_gray"
-            android:background="@color/colorPrimary"
+            android:src="@drawable/i_schedule_32x32"
+            app:fabSize="mini"/>
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fabMS"
+            app:fab_label="授課課表"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="授課課表" />
-
-        <Button
-            android:layout_weight="1"
-            android:id="@+id/btn老師通知事項"
-            android:textColor="@android:color/darker_gray"
-            android:background="@color/colorPrimary"
+            app:fab_colorNormal="@color/colorAccent"
+            android:src="@drawable/i_schedule_32x32"
+            app:fabSize="mini"/>
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fabInfo"
+            app:fab_label="通知事項"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="通知事項" />
-    </LinearLayout>
+            android:src="@drawable/i_news"
+            app:fabSize="mini"/>
 
-</android.support.constraint.ConstraintLayout>
+    </com.github.clans.fab.FloatingActionMenu>
+
+</android.support.design.widget.CoordinatorLayout>

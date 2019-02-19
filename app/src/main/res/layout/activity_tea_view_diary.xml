@@ -4,13 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorSecond"
     tools:context=".ActivityTea_ViewDiary">
+    <TextView
+        android:text="DId"
+        android:id="@+id/txtDiaryId"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:text="SId"
+        android:id="@+id/txtStuId"
+        android:gravity="center"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
     <TextView
         android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="學生首頁"
-        android:textSize="20dp"
+        android:text="日誌頁"
+        android:textSize="30dp"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -27,11 +44,19 @@
         tools:ignore="MissingConstraints">
 
         <Button
+            android:tooltipText="第一筆"
             android:id="@+id/btnPreDay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:background="@android:drawable/ic_media_rew" />
+            android:background="@mipmap/ic_arrow_back" />
+        <Button
+            android:tooltipText="上一筆"
+            android:backgroundTint="@color/colorPrimary"
+            android:background="@mipmap/ic_arrow_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"/>
 
         <TextView
             android:id="@+id/txtDate"
@@ -41,17 +66,26 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1" />
-
         <Button
             android:id="@+id/btnNextDay"
+            android:tooltipText="下一筆"
+            android:backgroundTint="@color/colorPrimary"
+            android:background="@mipmap/ic_arrow_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"/>
+        <Button
+            android:id="@+id/btnLast"
+            android:tooltipText="最後一筆"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:background="@android:drawable/ic_media_ff" />
+            android:background="@mipmap/ic_arrow_next"/>
     </LinearLayout>
     <TextView
         android:id="@+id/txtS"
         android:text="日誌內容"
+        android:textSize="20dp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,7 +94,7 @@
         tools:ignore="MissingConstraints" />
     <TextView
         android:id="@+id/txtDiary"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:background="@drawable/txt_background1"
         android:layout_width="match_parent"
         android:layout_height="180dp"
@@ -70,6 +104,7 @@
     <TextView
         android:id="@+id/txtT"
         android:text="導師評語"
+        android:textSize="20dp"
         android:textColor="@color/colorPrimaryDark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -78,12 +113,23 @@
         tools:ignore="MissingConstraints" />
     <TextView
         android:id="@+id/txtReply"
-        android:textSize="20dp"
+        android:textSize="30dp"
         android:layout_width="match_parent"
         android:background="@drawable/txt_background1"
         android:layout_height="180dp"
         app:layout_constraintTop_toBottomOf="@+id/txtT"
         tools:ignore="MissingConstraints" />
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fabReply"
+        app:fab_label="回覆/更改回覆"
+        android:layout_margin="16dp"
+        app:fab_colorNormal="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pencil"
+        app:fabSize="normal"/>
 
 
 </android.support.constraint.ConstraintLayout>

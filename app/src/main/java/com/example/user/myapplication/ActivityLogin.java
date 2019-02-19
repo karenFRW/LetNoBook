@@ -34,7 +34,7 @@ public class ActivityLogin extends AppCompatActivity {
     private Button btn登入;
     private Button btn取消登入;
     private Intent intent;
-    private String uId ;
+    public static String uId ;
     private String uPw;
     private Boolean isRemember = false;
 
@@ -188,12 +188,13 @@ public class ActivityLogin extends AppCompatActivity {
                             //將登入者資訊記入"LoginAct_userInfo"
                             SharedPreferences table = getSharedPreferences(CDictionary.LoginAct_userInfo,MODE_PRIVATE);
                             SharedPreferences.Editor row = table.edit();
-                            row.putString(CDictionary.LoginAct_userId, user);
-                            row.putString(CDictionary.LoginAct_userFamilyId,famId);
-                            row.putString(CDictionary.LoginAct_userName,uName);
-                            row.putString(CDictionary.LoginAct_userBirthday,bDay);
-                            row.putString(CDictionary.LoginAct_userClassId,clsId);
-                            row.putInt(CDictionary.LoginAct_teacherId, tId);
+                            row.putString(CDictionary.LoginAct_userId, user); //f學生編號
+                            row.putString(CDictionary.LoginAct_userFamilyId,famId); //f家庭編號
+                            row.putString(CDictionary.LoginAct_userName,uName); //f學生姓名
+                            row.putString(CDictionary.LoginAct_userBirthday,bDay); //f學生生日
+                            row.putString(CDictionary.LoginAct_userClassId,clsId); //fClassId
+                            row.putInt(CDictionary.LoginAct_teacherId, tId); //f導師編號
+                            row.putString(CDictionary.LoginAct_teacherName, tName);
                             row.commit();
 
                             if(uId.equals(user)){
@@ -209,7 +210,17 @@ public class ActivityLogin extends AppCompatActivity {
                                             ActivityLogin.this.finish();
                                         }
                                     });
+                                }else{
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(getApplicationContext()
+                                                    , uName+" 密碼有錯唷"
+                                                    , Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                 }
+
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -222,7 +233,23 @@ public class ActivityLogin extends AppCompatActivity {
                 new Thread(){
                     @Override
                     public void run() {
-                        String path = "tTeachers/"+ uId;
+                        String path = "institute/tTeachers/"+ uId;
+                        String classId = new String();
+                        switch (uId){
+                            case "200":
+                                classId = "403";
+                                break;
+                            case "201":
+                                classId = "401";
+                                break;
+                            case "202":
+                                classId = "402";
+                                break;
+                            default:
+                                classId = "0";
+                                break;
+
+                        }
                         try {
                             CHttpUrlConnection c = new CHttpUrlConnection();
                             jsonString = c.getTable(path);
@@ -241,6 +268,7 @@ public class ActivityLogin extends AppCompatActivity {
                             Log.d("LetNoBook", "f老師密碼" + pwd);
                             Log.d("LetNoBook", "f老師姓名" + uName);
                             Log.d("LetNoBook", "f老師生日" + bDay);
+
 
                             //將登入者資訊記入"LoginAct_userInfo"
                             SharedPreferences table = getSharedPreferences(CDictionary.LoginAct_userInfo,MODE_PRIVATE);
@@ -263,6 +291,15 @@ public class ActivityLogin extends AppCompatActivity {
                                             ActivityLogin.this.finish();
                                         }
                                     });
+                                }else{
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(getApplicationContext()
+                                                    , uName+" 密碼有錯唷"
+                                                    , Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                 }
                             }
                         } catch (JSONException e) {
@@ -275,7 +312,7 @@ public class ActivityLogin extends AppCompatActivity {
                 new Thread(){
                     @Override
                     public void run() {
-                        String path = "tParents/"+ uId;
+                        String path = "institute/tParents/"+ uId;
                         try {
                             CHttpUrlConnection c = new CHttpUrlConnection();
                             jsonString = c.getTable(path);
@@ -316,6 +353,15 @@ public class ActivityLogin extends AppCompatActivity {
                                             ActivityLogin.this.finish();
                                         }
                                     });
+                                }else{
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(getApplicationContext()
+                                                    , uName+" 密碼有錯唷"
+                                                    , Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                 }
                             }
                         } catch (JSONException e) {
@@ -331,32 +377,6 @@ public class ActivityLogin extends AppCompatActivity {
                 Log.d("LetNoBook", "笨蛋--笨蛋--笨蛋--笨蛋--笨蛋--笨蛋");
             }
         }
-        ////登入-假資料
-//        if((uId!=null) && (uPw!=null)){
-//            if(uId.equals("s01")){
-//                if(uPw.equals("s01")){
-//                    Toast.makeText(ActivityLogin.this,
-//                            "歡迎 " + uId + "登入",
-//                            Toast.LENGTH_SHORT).show();
-//                    intent = new Intent(ActivityLogin.this, ActivityStu.class);
-//                    startActivity(intent);
-//                    ActivityLogin.this.finish();
-//
-//                }else {
-//                    Toast.makeText(ActivityLogin.this,
-//                            "密碼錯誤",
-//                            Toast.LENGTH_SHORT).show();
-//                }
-//            }else{
-//                Toast.makeText(ActivityLogin.this,
-//                        "沒有登入權限",
-//                        Toast.LENGTH_SHORT).show();
-//            }
-//        }else{
-//            Toast.makeText(ActivityLogin.this,
-//                    "請輸入帳號密碼",
-//                    Toast.LENGTH_SHORT).show();
-//        }
 
         ////使用者有勾選記住帳密
         if(ckb記帳密.isChecked()){

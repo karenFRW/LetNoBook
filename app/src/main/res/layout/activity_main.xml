@@ -61,7 +61,7 @@
         <!--android:layout_gravity="center"-->
         <!--app:fab_showAnimation="@anim/fab_scale_up"-->
         <!--android:backgroundTint="@color/colorAccent"-->
-        <!--android:src="@drawable/i_user_32x32"-->
+        <!--android:src="@drawable/m_user_32x32"-->
         <!--app:elevation="12dp"-->
         <!--app:fabSize="normal"-->
         <!--app:pressedTranslationZ="12dp"-->

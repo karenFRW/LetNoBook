@@ -25,6 +25,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="一"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -45,6 +46,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="102\n體育"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -52,6 +54,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="501\n體育"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -59,6 +62,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="502\n體育"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -72,6 +76,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="507\n體育"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -79,6 +84,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="507\n體育"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -106,6 +112,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="二"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -132,6 +139,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="505\n體育"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -157,6 +165,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="103\n體育"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -184,6 +193,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="三"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -198,6 +208,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="102\n體育"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -205,6 +216,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="506\n體育"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -212,6 +224,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="503\n體育"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -225,6 +238,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="午休"
+                android:textSize="30dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:background="@color/colorSecond"
@@ -264,6 +278,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="四"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -278,6 +293,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="501\n體育"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -285,6 +301,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="502\n體育"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -310,6 +327,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="507\n綜合"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -317,6 +335,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="507\n綜合"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -324,6 +343,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="603\n健康"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -345,6 +365,7 @@
             android:layout_height="match_parent">
             <TextView
                 android:text="五"
+                android:textSize="30dp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:background="@color/colorSecond"
@@ -365,6 +386,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="103\n體育"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -372,6 +394,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="505\n體育"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -379,6 +402,7 @@
                 android:layout_height="match_parent" />
             <TextView
                 android:text="506\n體育"
+                android:textSize="18dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_weight="1"
                 android:gravity="center"

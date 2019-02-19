@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <TextView
+        android:text="日誌編號"
+        android:id="@+id/txtDiaryId"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:text="學生編號"
+        android:id="@+id/txtStuId"
+        android:gravity="center"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/txtTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="日誌頁"
+        android:textSize="30dp"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"/>
+
+    <LinearLayout
+        android:id="@+id/dateArea"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/txtTop"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/btnFirst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="@android:color/transparent" />
+        <Button
+            android:id="@+id/btnPreDay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:backgroundTint="@color/colorPrimary"
+            android:background="@android:color/transparent" />
+        <TextView
+            android:id="@+id/txtDate"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:layout_marginRight="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/btnNextDay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:backgroundTint="@color/colorPrimary"
+            android:background="@android:color/transparent"/>
+        <Button
+            android:id="@+id/btnLast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/txtS"
+        android:text="我的日誌"
+        android:textSize="20dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/dateArea"
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/txtDiary"
+        android:textSize="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/txt_background1"
+        app:layout_constraintTop_toBottomOf="@+id/txtS"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/txtT"
+        android:text="導師評語"
+        android:textSize="20dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtDiary"
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/txtReply"
+        android:textSize="30dp"
+        android:layout_width="match_parent"
+        android:background="@drawable/txt_background1"
+        android:layout_height="180dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtT"
+        tools:ignore="MissingConstraints" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints">
+        <Button
+            android:id="@+id/btnPP"
+            android:text="確定送出"
+            android:textSize="30dp"
+            android:textColor="@color/colorSecond"
+            android:background="@drawable/custom_ripple2"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/btnCxl"
+            android:text="取消編輯"
+            android:textSize="30dp"
+            android:textColor="@color/colorSecond"
+            android:background="@drawable/custom_ripple2"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

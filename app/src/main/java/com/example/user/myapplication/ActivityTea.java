@@ -13,6 +13,8 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.clans.fab.FloatingActionButton;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,27 +23,28 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ActivityTea extends AppCompatActivity {
-    private Button btn授課課表;
-    private Button btn班級課表;
-    private Button btn通知事項;
+    private FloatingActionButton fabCS, fabMS, fabInfo;
     private TextView txtSubTitle, txtTitle;
     private ListView listView;
     private String json = null;
     private ArrayList<HashMap<String, String>> arrayList = new ArrayList<HashMap<String, String>>();
-    private mySimpleAdapter2 adapter = null;
+    private mySimpleAdapterT adapter = null;
     private SharedPreferences table = null;
     private SharedPreferences.Editor row = null;
     private String teacherName = null;
     private Intent intent = null;
     private Integer teacherId = null;
+    private Button btnKids=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tea);
 
+
+
         InitialComponent();
-        new ParseTask().execute(); //學生清單
+        new StuListTask().execute(); //學生清單
 
     }
 
@@ -50,17 +53,65 @@ public class ActivityTea extends AppCompatActivity {
         txtSubTitle = findViewById(R.id.txtSubTitle);
         listView = findViewById(R.id.listView);
 
-        btn授課課表 =  findViewById(R.id.btn老師授課課表);
-        btn授課課表.setOnClickListener(btn授課課表_Click);
+        fabMS =  findViewById(R.id.fabMS);
+        fabMS.setOnClickListener(fabMS_Click);
 
-        btn班級課表 =  findViewById(R.id.btn老師班級課表);
-        btn班級課表.setOnClickListener(btn班級課表_Click);
+        fabCS =  findViewById(R.id.fabCS);
+        fabCS.setOnClickListener(fabCS_Click);
 
-        btn通知事項 =  findViewById(R.id.btn老師通知事項);
-        btn通知事項.setOnClickListener(btn通知事項_Click);
+        fabInfo =  findViewById(R.id.fabInfo);
+        fabInfo.setOnClickListener(fabInfo_Click);
+
+        btnKids = findViewById(R.id.btnKids);
+        btnKids.setOnClickListener(btnKids_Click);
     }
 
-    private View.OnClickListener btn授課課表_Click = new View.OnClickListener() {
+
+    private View.OnClickListener btnKids_Click = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            teacherId = Integer.valueOf(table.getString(CDictionary.LoginAct_userId, null));
+
+            switch (teacherId){
+                case 200:
+                    intent = new Intent(ActivityTea.this, ActivityTea_KidsLocation.class);
+                    intent.putExtra(CDictionary.List_viewLocationByClassId, "403");
+                    startActivity(intent);
+                    Log.d("LetNoBook_ActivityTea", "開啟 Students Location");
+                    break;
+                case 201:
+                    intent = new Intent(ActivityTea.this, ActivityTea_KidsLocation.class);
+                    intent.putExtra(CDictionary.List_viewLocationByClassId, "401");
+                    startActivity(intent);
+                    Log.d("LetNoBook_ActivityTea", "開啟 Students Location");
+                    break;
+                case 202:
+                    intent = new Intent(ActivityTea.this, ActivityTea_KidsLocation.class);
+                    intent.putExtra(CDictionary.List_viewLocationByClassId, "402");
+                    startActivity(intent);
+                    Log.d("LetNoBook_ActivityTea", "開啟 Students Location");
+                    break;
+                case 203:
+                case 204:
+                case 205:
+                    Log.d("LetNoBook_ActivityTea", "不是導師; 無法使用此功能");
+                    Toast.makeText(getApplicationContext()
+                            , "不是導師; 無法使用此功能"
+                            , Toast.LENGTH_LONG).show();
+                    break;
+                default:
+                    Log.d("LetNoBook_ActivityTea", "查無教師詳細資料; 無法使用此功能");
+                    Toast.makeText(getApplicationContext()
+                            , "查無教師詳細資料; 無法使用此功能"
+                            , Toast.LENGTH_LONG).show();
+                    break;
+            }
+
+
+        }
+    };
+
+    private View.OnClickListener fabMS_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             //授課課表
@@ -105,7 +156,7 @@ public class ActivityTea extends AppCompatActivity {
             }
         }
     };
-    private View.OnClickListener btn班級課表_Click = new View.OnClickListener() {
+    private View.OnClickListener fabCS_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             //班級課表
@@ -136,19 +187,43 @@ public class ActivityTea extends AppCompatActivity {
             }
         }
     };
-    private View.OnClickListener btn通知事項_Click = new View.OnClickListener() {
+    private View.OnClickListener fabInfo_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             teacherId = Integer.valueOf(table.getString(CDictionary.LoginAct_userId, null));
 
             switch (teacherId){
                 case 200:
+                    intent = new Intent(ActivityTea.this, ActivityTea_Info.class);
+                    intent.putExtra(CDictionary.List_viewInfoByClassId, "403");
+                    intent.putExtra(CDictionary.List_viewInfoByTeaId, "200");
+                    startActivity(intent);
+                    Log.d("LetNoBook_ActivityTea", "開啟403通知事項");
+                    break;
                 case 201:
+                    intent = new Intent(ActivityTea.this, ActivityTea_Info.class);
+                    intent.putExtra(CDictionary.List_viewInfoByClassId, "401");
+                    intent.putExtra(CDictionary.List_viewInfoByTeaId, "201");
+                    startActivity(intent);
+                    Log.d("LetNoBook_ActivityTea", "開啟401通知事項");
+                    break;
                 case 202:
+                    intent = new Intent(ActivityTea.this, ActivityTea_Info.class);
+                    intent.putExtra(CDictionary.List_viewInfoByClassId, "402");
+                    intent.putExtra(CDictionary.List_viewInfoByTeaId, "202");
+                    startActivity(intent);
+                    Log.d("LetNoBook_ActivityTea", "開啟402通知事項");
+                    break;
                 case 203:
+                    intent = new Intent(ActivityTea.this, ActivityTea_Info.class);
+                    intent.putExtra(CDictionary.List_viewInfoByClassId, "403");
+                    startActivity(intent);
+                    Log.d("LetNoBook_ActivityTea", "開啟通知事項");
+                    break;
                 case 204:
                 case 205:
                     intent = new Intent(ActivityTea.this, ActivityTea_Info.class);
+                    intent.putExtra(CDictionary.List_viewInfoByClassId, "403");
                     startActivity(intent);
                     Log.d("LetNoBook_ActivityTea", "開啟通知事項");
                     break;
@@ -161,11 +236,11 @@ public class ActivityTea extends AppCompatActivity {
             }
         }
     };
-    private class ParseTask  extends AsyncTask<Void,Void,SimpleAdapter> {
+    private class StuListTask extends AsyncTask<Void,Void,SimpleAdapter> {
         @Override
         protected SimpleAdapter doInBackground(Void... voids) {
             String[] from = {"txtItem", "txtId", "teacher"};
-            int[] to = {R.id.txtItem, R.id.txtId, R.id.teacher};
+            int[] to = {R.id.txtItem, R.id.txtId, R.id.familyId};
             HashMap<String, String> hashmap;
 
             //取得(使用者)老師姓名, 當作查 tStudents 的 Key
@@ -201,7 +276,7 @@ public class ActivityTea extends AppCompatActivity {
                         arrayList.add(hashmap);
                     }
                 }
-                adapter = new mySimpleAdapter2(ActivityTea.this, arrayList, R.layout.item2, from, to);
+                adapter = new mySimpleAdapterT(ActivityTea.this, arrayList, R.layout.item_t, from, to);
 
             } catch (JSONException e) {
                 e.printStackTrace();

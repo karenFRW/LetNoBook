@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorSecond"
     tools:context=".MainActivity">
 
     <TextView
@@ -13,12 +14,15 @@
         android:text="家長首頁"
         android:textSize="20dp"
         android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <LinearLayout
+        android:id="@+id/lyMain"
+        android:gravity="center"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,6 +30,7 @@
         tools:ignore="MissingConstraints">
         <LinearLayout
             android:layout_weight="2"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
@@ -36,7 +41,7 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
         <LinearLayout
-            android:layout_weight="3"
+            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
@@ -46,7 +51,13 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-
+            <TextView
+                android:text="課表"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
             <TextView
                 android:text="位置"
                 android:layout_weight="1"
@@ -62,13 +73,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
-
-
     </LinearLayout>
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="450dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -76,10 +87,19 @@
 
     </ListView>
 
-
-
-
-
+    <Button
+        android:id="@+id/btnKids"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_ripple"
+        android:shadowColor="@color/colorAccent"
+        android:text="查看孩子們的位置"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20dp"
+        app:layout_constraintTop_toBottomOf="@id/listView"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="562dp" />
 
 
 </android.support.constraint.ConstraintLayout>
