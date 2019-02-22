@@ -52,58 +52,55 @@ public class mySimpleAdapterP extends SimpleAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = super.getView(position, convertView, parent);
         final int p = position;
-        stuId = data.get(p).get("stu_id");
-        stuName = data.get(p).get("stu_name");
-        clsId = data.get(p).get("txtClass");
-
         TextView txtStuName = v.findViewById(R.id.stu_name);
         txtStuName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context
-                        , stuName + " 寶貝"
+                        , data.get(p).get("stu_name") + " 寶貝"+", 學生編號:"+data.get(p).get("stu_id")
                         , Toast.LENGTH_SHORT).show();
             }
         });
 
         TextView txtStuId = v.findViewById(R.id.stu_id);
-
         ImageButton btnDiary = v.findViewById(R.id.btnDiary);
         btnDiary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context
-                        , "開啟 " + stuName + " 的日誌"
+                        , "開啟 " + data.get(p).get("stu_name") + " 的日誌"
                         , Toast.LENGTH_LONG).show();
                 intent = new Intent(context, ActivityPar_ViewDiary.class);
-                intent.putExtra(CDictionary.List_viewDiaryById, stuId);
-                intent.putExtra(CDictionary.List_viewDiaryByName, stuName);
-                intent.putExtra(CDictionary.List_viewInfoByClassId, clsId);
+                intent.putExtra(CDictionary.List_viewDiaryById, data.get(p).get("stu_id"));
+                intent.putExtra(CDictionary.List_viewDiaryByName, data.get(p).get("stu_name"));
+                intent.putExtra(CDictionary.List_viewInfoByClassId, data.get(p).get("txtCIsId"));
+                intent.putExtra(CDictionary.List_viewCommFamilyId, data.get(p).get("familyId"));
                 context.startActivity(intent);
-                Log.d("LetNoBook", "開啟 " + stuName + " 的日誌");
+                Log.d("LetNoBook", "開啟 " + data.get(p).get("stu_name") + " 的日誌,"+data.get(p).get("stu_id"));
             }
         });
 
-        TextView txtCId = v.findViewById(R.id.txtCId);
+        final TextView txtClsId = v.findViewById(R.id.txtClsId);
 
         ImageButton btnSchedule = v.findViewById(R.id.btnSchedule);
         btnSchedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(clsId != null){
-                    Integer ci = Integer.valueOf(clsId);
-                    switch (ci){
-                        case 403:
+
+                if(txtClsId.getText().toString() != null){
+                    String cc = txtClsId.getText().toString() ;
+                    switch (cc){
+                        case "403":
                             intent = new Intent(context, ActivitySchedule_200.class);
                             context.startActivity(intent);
                             Log.d("LetNoBook_Stu", "班級課表_403_1年1班");
                             break;
-                        case 401:
+                        case "401":
                             intent = new Intent(context, ActivitySchedule_201.class);
                             context.startActivity(intent);
                             Log.d("LetNoBook_Stu", "班級課表_401_1年2班");
                             break;
-                        case 402:
+                        case "402":
                             intent = new Intent(context, ActivitySchedule_202.class);
                             context.startActivity(intent);
                             Log.d("LetNoBook_Stu", "班級課表_402_1年3班");
@@ -124,12 +121,12 @@ public class mySimpleAdapterP extends SimpleAdapter {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context
-                        , "查看 " + stuName + " 的位置"
+                        , "查看 " + data.get(p).get("stu_name") + " 的位置"
                         , Toast.LENGTH_LONG).show();
                 intent = new Intent(context, ActivityPar_ViewLocation.class);
-                intent.putExtra(CDictionary.List_viewLocationByClassId, clsId);
-                intent.putExtra(CDictionary.List_viewLocationByName, stuName);
-                intent.putExtra(CDictionary.List_viewLocationByFamilyId, familyId);
+                intent.putExtra(CDictionary.List_viewLocationByClassId, data.get(p).get("txtCIsId"));
+                intent.putExtra(CDictionary.List_viewLocationByName, data.get(p).get("stu_name"));
+                intent.putExtra(CDictionary.List_viewLocationByFamilyId, data.get(p).get("familyId"));
                 context.startActivity(intent);
                 Log.d("LetNoBook", "查看 " + stuName + " 的位置");
             }
@@ -139,12 +136,12 @@ public class mySimpleAdapterP extends SimpleAdapter {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context
-                        ,  stuName + " 的親師留言版"
+                        ,  data.get(p).get("stu_name") + " 的親師留言版"
                         , Toast.LENGTH_LONG).show();
                 intent = new Intent(context, ActivityPar_Contact.class);
-                intent.putExtra(CDictionary.List_viewCommById, stuId);
-                intent.putExtra(CDictionary.List_viewCommByName, stuName);
-                intent.putExtra(CDictionary.List_viewCommByClassId, clsId);
+                intent.putExtra(CDictionary.List_viewCommById, data.get(p).get("stu_id"));
+                intent.putExtra(CDictionary.List_viewCommByName, data.get(p).get("stu_name"));
+                intent.putExtra(CDictionary.List_viewCommByClassId, data.get(p).get("txtCIsId"));
                 context.startActivity(intent);
                 Log.d("LetNoBook", "GO " + stuName + " 的親師留言版");
             }

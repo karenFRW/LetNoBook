@@ -36,6 +36,16 @@ public class CDictionary {
     public static final String List_viewCommById = "List_viewCommById";
     public static final String List_viewCommByName = "List_viewCommByName";
     public static final String List_viewCommByClassId = "List_viewCommByClassId";
+    public static final String List_viewCommFamilyId = "List_viewCommFamilyId";
+
+    public static final String List_editCommById = "List_editCommById";
+    public static final String List_editCommByDate = "List_editCommByDate";
+    public static final String List_editCommTeaMsg = "List_editCommTeaMsg";
+    public static final String List_editCommParMsg = "List_editCommParMsg";
+    public static final String List_editCommStuId = "List_editCommStuId";
+    public static final String List_editCommStuName = "List_editCommStuName";
+    public static final String List_editCommSign = "List_editCommSign";
+    public static final String List_editCommClsId = "List_editCommClsId";
 
     public static final String List_viewLocationByName = "List_viewLocationByName";
     public static final String List_viewLocationByClassId = "List_viewLocationByClassId";

@@ -17,7 +17,7 @@ public class CDiaryFactory {
     private ArrayList<CDiary> list=new ArrayList<CDiary>();
     private int position=0;
     private String jsonStr = new String();
-    private String stuId = null;
+    private String stuId;
 
     private void LoadData(){
         new Thread(){
@@ -26,25 +26,22 @@ public class CDiaryFactory {
                 CHttpUrlConnection c = new CHttpUrlConnection();
                 jsonStr = c.getTable("institute/tDiaries");
 
-                String uId = ActivityLogin.uId;
-                Log.d("LetNoBook_登入者id", uId);
+                String uId = ActivityLogin.user;
+                Log.d("LetNoBook_diaryFac登入者id", uId);
                 Integer userId = Integer.valueOf(uId);
 
                 String s = new String();
-
                 //判斷目前使用者的身分, 取得要裝入列表的參數@stuId
-                if((userId < 200)){
+                if(userId < 200){
                     //登入者是學生
-                    s = uId;
-                }else if((userId>=200) && (userId <=400)){
-                    //登入者是導師或家長
-                    //判斷此學生id從哪個Activity讀取
-                    if(ActivityTea_ViewDiary.studentId == null){
-                        s = ActivityPar_ViewDiary.studentId;
-                    }else {
-                        s = ActivityTea_ViewDiary.studentId;
-                    }
+                    stuId = uId;
+                }else if((userId>=200) && (userId<300)){
+                    stuId = ActivityTea_ViewDiary.studentId;
+                }else if(userId>=300){
+                    stuId = ActivityPar_ViewDiary.studentId;
                 }
+
+                Log.d("LetNoBook_diaryFactory","stuId==="+stuId);
                 Log.d("LetNoBook", "Sd="+uId);
                 Log.d("LetNoBook", "Pd="+ActivityPar_ViewDiary.studentId);
                 Log.d("LetNoBook", "Td="+ActivityTea_ViewDiary.studentId);
@@ -64,7 +61,7 @@ public class CDiaryFactory {
                         String r = diary.getString("f日誌批改");
                         String fReply;
                         if((r.equals("null")) || (r.equals("")) || (r==null)){
-                            fReply = "尚未回應";
+                            fReply = "";
                         }else {
                             fReply = r;
                         }
@@ -73,11 +70,14 @@ public class CDiaryFactory {
                         String fDate = d.substring(0, 10);
                         Log.d("LetNoBook_diaryFactory", "fDate:"+fDate);
                         String studentId = diary.getString("f學生編號");
-                        Log.d("LetNoBook_diaryFactory", "studentId:"+studentId);
+                        Log.d("LetNoBook_diaryFactory", "stuId:"+studentId);
 
-                        //當參數@stuId等於jsonStr裡的學生編號, 將此筆日誌加入列表
-                        if(s.equals(studentId)){
-                            Log.d("LetNoBook_diaryFactory", "s+studentId:"+s+"="+studentId);
+                        Log.d("LetNoBook_diaryFactory", "s+stuId:"+s+"+"+studentId);
+                        if(stuId.equals(studentId)){
+
+
+                            //當參數@stuId等於jsonStr裡的學生編號, 將此筆日誌加入列表
+                            Log.d("LetNoBook_diaryFactory", "s+stuId:"+s+"="+studentId);
                             //(int f日誌編號, String f學生日誌文字, String f學生日誌照片
                             // String f日誌批改, String f日期, int f學生編號)
                             CDiary dy = new CDiary(Integer.parseInt(fDId),fDiary,

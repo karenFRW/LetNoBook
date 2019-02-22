@@ -50,7 +50,7 @@ public class ActivityTea_Diary_edit extends AppCompatActivity {
         txtDiary = findViewById(R.id.txtDiary);
         txtDiary.getBackground().setAlpha(70);
         txtDiary.setText(日誌);
-        txtDiary.setEnabled(true);
+        txtDiary.setFocusableInTouchMode(false);
         txtReply = findViewById(R.id.txtReply);
         txtReply.getBackground().setAlpha(70);
         txtReply.setText(師評);

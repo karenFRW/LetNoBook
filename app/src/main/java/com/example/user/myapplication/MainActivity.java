@@ -57,21 +57,21 @@ public class MainActivity extends AppCompatActivity {
                                 break;
                             case 1:
                                 Toast.makeText(MainActivity.this, "即將打開瀏覽器", Toast.LENGTH_SHORT).show();
-                                uri = Uri.parse("http://fuxiao.ps.nutn.edu.tw/?page_id=17");
+                                uri = Uri.parse("http://school.kh.edu.tw/index.php?WebID=161");
                                 intent = new Intent(Intent.ACTION_VIEW, uri);
                                 startActivity(intent);
                                 MainActivity.this.onResume();
                                 break;
                             case 2:
                                 Toast.makeText(MainActivity.this, "即將打開瀏覽器", Toast.LENGTH_SHORT).show();
-                                uri = Uri.parse("http://fuxiao.ps.nutn.edu.tw/");
+                                uri = Uri.parse("http://school.kh.edu.tw/index.php?WebID=161");
                                 intent = new Intent(Intent.ACTION_VIEW, uri);
                                 startActivity(intent);
                                 MainActivity.this.onResume();
                                 break;
                             case 3:
                                 Toast.makeText(MainActivity.this, "即將打開瀏覽器", Toast.LENGTH_SHORT).show();
-                                uri = Uri.parse("http://fuxiao.ps.nutn.edu.tw/?page_id=21");
+                                uri = Uri.parse("http://school.kh.edu.tw/index.php?WebID=161");
                                 intent = new Intent(Intent.ACTION_VIEW, uri);
                                 startActivity(intent);
                                 MainActivity.this.onResume();

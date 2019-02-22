@@ -47,7 +47,7 @@ public class ActivityStu_Diary_edit extends AppCompatActivity {
         txtDiary.getBackground().setAlpha(70);
         txtReply = findViewById(R.id.txtReply);
         txtReply.getBackground().setAlpha(70);
-        txtReply.setClickable(false);
+        txtReply.setFocusableInTouchMode(false);
         btnPP = findViewById(R.id.btnPP);
         btnPP.setOnClickListener(btnPP_Click);
         btnCxl = findViewById(R.id.btnCxl);
@@ -121,7 +121,7 @@ public class ActivityStu_Diary_edit extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
             else
                 Toast.makeText(ActivityStu_Diary_edit.this,
-                        "成功新增日誌, 棒!",
+                        "成功新增!",
                         Toast.LENGTH_LONG).show();
             Log.d("LetNoBook_DiaryTask", "新增:" +result);
         }

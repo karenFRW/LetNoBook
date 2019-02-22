@@ -6,12 +6,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class CInfoFactory {
     private ArrayList<CInfo> list = new ArrayList<>();
+    private ArrayList<CInfo> listByDate = new ArrayList<>();
     private int position = 0;
     private String jsonStr = new String();
+    String userClsId = new String();
 
     private void Load(){
         new Thread(){
@@ -22,7 +27,7 @@ public class CInfoFactory {
                 String userId = ActivityLogin.user;
                 Integer intUserId = Integer.valueOf(userId);
 
-                String userClsId = new String();
+
                 //判斷目前使用者的身分, 取得要裝入列表的參數@userClsId
                 if((intUserId < 200)){
                     //登入者是學生
@@ -30,10 +35,10 @@ public class CInfoFactory {
                 }else if((intUserId>=200) && (intUserId <=400)){
                     //登入者是導師或家長
                     //判斷此學生id從哪個Activity讀取
-                    if(ActivityTea_xxx.classId != null){
-                        userClsId = ActivityTea_xxx.classId;
+                    if(ActivityTea_Info.classId != null){
+                        userClsId = ActivityTea_Info.classId;
                     }else {
-                        userClsId = ActivityPar_Info.clsId;
+                        userClsId = ActivityPar_Info.classId;
                     }
                 }
 
@@ -46,25 +51,30 @@ public class CInfoFactory {
                         int fInfoId = Integer.parseInt(info.getString("fInfoId"));
                         String d = info.getString("f日期");
                         String fDate = d.substring(0, 10);
-                        String sj = info.getString("f科目");
+                        String ss = info.getString("f科目");
+                        String sj;
+                        if((ss.equals("")) || (ss.equals(null)) || (ss.equals("null")))
+                            sj = "";
+                        else
+                            sj = ss;
                         String h = info.getString("f作業通知");
                         String sf = info.getString("f用品通知");
                         String o = info.getString("f其他通知");
                         String hw;
                         if((h.equals("")) || (h.equals(null)) || (h.equals("null")))
-                            hw = "空白";
+                            hw = "";
                         else
                             hw = h;
 
                         String staff;
                         if((sf.equals("")) || (sf.equals(null)) || (sf.equals("null")))
-                            staff = "空白";
+                            staff = "";
                         else
                             staff = sf;
 
                         String other;
                         if((o.equals("")) || (o.equals(null)) || (o.equals("null")))
-                            other = "空白";
+                            other = "";
                         else
                             other = o;
 
@@ -90,6 +100,13 @@ public class CInfoFactory {
                             CInfo cinfo = new CInfo(fInfoId,fDate,sj,hw,staff,other,cd,tn);
                             list.add(cinfo);
                             Log.d("LetNoBook","list.size():" +list.size());
+
+//                            Date date = new Date();
+//                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.TAIWAN);
+//                            String now = simpleDateFormat.format(date);
+//                            String strDate = list.get(position).getF日期();
+//                            if(now.equals(strDate))
+
                         }
                     }
                 } catch (JSONException e) {
@@ -133,5 +150,9 @@ public class CInfoFactory {
     }
     public int getSize(){
         return list.size();
+    }
+    public void ShowByDate(){
+
+
     }
 }

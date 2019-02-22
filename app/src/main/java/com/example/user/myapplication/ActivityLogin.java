@@ -193,7 +193,7 @@ public class ActivityLogin extends AppCompatActivity {
                             row.putString(CDictionary.LoginAct_userName,uName); //f學生姓名
                             row.putString(CDictionary.LoginAct_userBirthday,bDay); //f學生生日
                             row.putString(CDictionary.LoginAct_userClassId,clsId); //fClassId
-                            row.putInt(CDictionary.LoginAct_teacherId, tId); //f導師編號
+                            row.putString(CDictionary.LoginAct_teacherId, String.valueOf(tId)); //f導師編號
                             row.putString(CDictionary.LoginAct_teacherName, tName);
                             row.commit();
 
@@ -258,6 +258,20 @@ public class ActivityLogin extends AppCompatActivity {
                             String pwd = jo.getString("f老師密碼");
                             final String uName = jo.getString("f老師姓名");
 
+                            String strTeaCls = new String();
+
+                            switch (user){
+                                case "200":
+                                    strTeaCls = "403";
+                                    break;
+                                case "201":
+                                    strTeaCls = "401";
+                                    break;
+                                case "202":
+                                    strTeaCls = "402";
+                                    break;
+                            }
+
                             //取得生日start -> 只取年月日 -> 去除-符號
                             String bD = jo.getString("f老師生日"); //yyyy-mm-dd Thh:mm:ss
                             String d = bD.substring(0,10); //yyyy-mm-dd
@@ -276,6 +290,7 @@ public class ActivityLogin extends AppCompatActivity {
                             row.putString(CDictionary.LoginAct_userId,user);
                             row.putString(CDictionary.LoginAct_userName, uName);
                             row.putString(CDictionary.LoginAct_userBirthday,bDay);
+                            row.putString(CDictionary.LoginAct_userClassId, strTeaCls);
                             row.commit();
 
                             if(uId.equals(user)){

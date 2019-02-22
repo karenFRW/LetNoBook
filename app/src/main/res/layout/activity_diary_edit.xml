@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <TextView
-        android:text="日誌編號"
+        android:text="DId"
         android:id="@+id/txtDiaryId"
         android:gravity="center"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints" />
     <TextView
-        android:text="學生編號"
+        android:text="StuId"
         android:id="@+id/txtStuId"
         android:gravity="center"
         app:layout_constraintRight_toRightOf="parent"
@@ -58,8 +58,7 @@
         <TextView
             android:id="@+id/txtDate"
             android:gravity="center"
-            android:textSize="30dp"
-            android:layout_marginRight="50dp"
+            android:textSize="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1" />

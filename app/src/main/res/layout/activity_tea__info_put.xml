@@ -8,7 +8,7 @@
     tools:context=".ActivityTea_Info_put">
     <TextView
         android:text="IId"
-        android:id="@+id/txtIId"
+        android:id="@+id/txtClsId"
         android:gravity="center"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="100dp"
@@ -72,16 +72,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
-    <TextView
-        android:id="@+id/txtSub"
-        android:textSize="30dp"
-        android:text="科目名稱"
-        android:textColor="@color/colorPrimary"
-        android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/txt1"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/dateArea"
+        tools:ignore="MissingConstraints">
+        <Spinner
+            android:id="@+id/spnSub"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </Spinner>
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/txtSub"
+            android:textSize="20dp"
+            android:text="科目名稱"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/txt1"
         android:text="今日作業"

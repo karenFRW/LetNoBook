@@ -12,21 +12,19 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
-public class ActivityTea_Contact_edit extends AppCompatActivity {
+public class ActivityPar_Contact_edit extends AppCompatActivity {
     //虛擬Bar-返回鍵 : 至首頁
     @Override
     public void onBackPressed() {
 //        super.onBackPressed();
-        intent = new Intent(ActivityTea_Contact_edit.this, ActivityTea_Contact.class);
+        intent = new Intent(ActivityPar_Contact_edit.this, ActivityPar_Contact.class);
         intent.putExtra(CDictionary.List_viewCommById,str學編);
         intent.putExtra(CDictionary.List_viewCommByName, str學名);
         intent.putExtra(CDictionary.List_viewCommByClassId, str班編);
-        ActivityTea_Contact_edit.this.finish();
-        Log.d("LetNoBook_TCP","虛擬Bar-返回");
+        ActivityPar_Contact_edit.this.finish();
+        Log.d("LetNoBook_PCP","虛擬Bar-返回");
     }
     private SharedPreferences table;
     private Intent intent;
@@ -50,17 +48,12 @@ public class ActivityTea_Contact_edit extends AppCompatActivity {
         InitialComponent();
 
         table = getSharedPreferences(CDictionary.LoginAct_userInfo,MODE_PRIVATE);
+        userId = table.getString(CDictionary.LoginAct_userId,null);
         intent = getIntent();
         stuId = intent.getStringExtra(CDictionary.List_editCommStuId);
         stuName = intent.getStringExtra(CDictionary.List_editCommStuName);
-        stuClsId = intent.getStringExtra(CDictionary.List_editCommClsId);
-        userId = table.getString(CDictionary.LoginAct_userId,null);
-
         showDetails();
-
     }
-
-
     void showDetails(){
         intent = getIntent();
         str留言id = intent.getStringExtra(CDictionary.List_editCommById);
@@ -100,9 +93,9 @@ public class ActivityTea_Contact_edit extends AppCompatActivity {
 
         txtTea = findViewById(R.id.txtTea);
         txtTea.getBackground().setAlpha(70);
+        txtTea.setFocusableInTouchMode(false);
 
         txtPar = findViewById(R.id.txtPar);
-        txtPar.setFocusableInTouchMode(false);
         txtPar.getBackground().setAlpha(70);
 
         btnPP = findViewById(R.id.btnPP);
@@ -110,14 +103,28 @@ public class ActivityTea_Contact_edit extends AppCompatActivity {
         btnCxl = findViewById(R.id.btnCxl);
         btnCxl.setOnClickListener(btnCxl_Click);
         btnSign = findViewById(R.id.btnSign);
+        btnSign.setOnClickListener(btnSign_Click);
 
     }
 
+    private View.OnClickListener btnSign_Click = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(btnSign.getText().toString().equals("未簽名")){
+                btnSign.setBackgroundResource(R.drawable.ripple_green);
+                btnSign.setText("已簽名");
+            }
+            else {
+                btnSign.setBackgroundResource(R.drawable.ripple_red);
+                btnSign.setText("未簽名");
+            }
+        }
+    };
 
     private View.OnClickListener btnCxl_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            intent = new Intent(ActivityTea_Contact_edit.this, ActivityTea_Contact.class);
+            intent = new Intent(ActivityPar_Contact_edit.this, ActivityPar_Contact.class);
             intent.putExtra(CDictionary.List_viewCommById,str學編);
             intent.putExtra(CDictionary.List_viewCommByName, str學名);
             intent.putExtra(CDictionary.List_viewCommByClassId, str班編);
@@ -159,7 +166,7 @@ public class ActivityTea_Contact_edit extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             Log.d("LetNoBook_TCP","作業中");
-            pDialog = new ProgressDialog(ActivityTea_Contact_edit.this);
+            pDialog = new ProgressDialog(ActivityPar_Contact_edit.this);
             pDialog.setMessage("作業中, 請稍後...");
             pDialog.setCancelable(false);
             pDialog.show();
@@ -169,13 +176,14 @@ public class ActivityTea_Contact_edit extends AppCompatActivity {
             CHttpPost cp = new CHttpPost();
 
             //老師update自己的交代事項,  ID是f交流編號, content=後面是更新的內容
-            //http://13.67.105.225/api06/ctra/CTUpdate/?id=1&content=Helloiamteacher
-            String path = "http://13.67.105.225/api06/ctra/CTUpdate/?id=" + int留言idnew +"&content=";
-            dataToJson = str師言new;
+            //http://13.67.105.225/api06/ctra/CPUpdate/?id=1&content=HelloWrld
+            //http://13.67.105.225/api10/ctra/cpupdate/?id=
+            String path = "http://13.67.105.225/api10/ctra/cpupdate/?id=" + int留言idnew +"&content=";
+            dataToJson = str家言new;
 //            cp.doPost(path,dataToJson);
             String result = cp.doPost(path, dataToJson);
-            Log.d("LetNoBook_TCP","api==" + path + dataToJson);
-            Log.d("LetNoBook_TCP","上傳中");
+            Log.d("LetNoBook_PCP","api==" + path + dataToJson);
+            Log.d("LetNoBook_PCP","上傳中");
             return result;
         }
         @Override
@@ -184,25 +192,25 @@ public class ActivityTea_Contact_edit extends AppCompatActivity {
             if (pDialog.isShowing())
                 pDialog.dismiss();
             if(!result.equals("Cannot find table 0."))
-                Toast.makeText(ActivityTea_Contact_edit.this,
+                Toast.makeText(ActivityPar_Contact_edit.this,
                         "無法上傳,請稍後再試喔!",
                         Toast.LENGTH_LONG).show();
             else{
-                Toast.makeText(ActivityTea_Contact_edit.this,
+                Toast.makeText(ActivityPar_Contact_edit.this,
                         "成功!",
                         Toast.LENGTH_LONG).show();
 
                 //ActivityTea_Contact 需要這些參數取得相關資料
                 //當畫面轉回去時, 要記得傳回去 @學id  @學名  @學班級
-                intent = new Intent(ActivityTea_Contact_edit.this, ActivityTea_Contact.class);
+                intent = new Intent(ActivityPar_Contact_edit.this, ActivityPar_Contact.class);
                 intent.putExtra(CDictionary.List_viewCommById, stuId);
                 intent.putExtra(CDictionary.List_viewCommByName, stuName);
                 intent.putExtra(CDictionary.List_viewCommByClassId, stuClsId);
                 startActivity(intent);
-                Log.d("LetNoBook_TCP","上傳成功 跳至 ActivityTea_Contact");
+                Log.d("LetNoBook_PCP","上傳成功 跳至 ActivityTea_Contact");
             }
 
-            Log.d("LetNoBook_TCP", "新增/失敗: " +result);
+            Log.d("LetNoBook_PCP", "新增/失敗: " +result);
         }
     }
     //end//新增留言

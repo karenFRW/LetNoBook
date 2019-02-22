@@ -37,16 +37,13 @@ public class ActivityTea_Info_post extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tea__info_post);
 
-
         InitialComponent();
-
-
 
         CheckOptions();
     }
     private void InitialComponent() {
         txtTId = findViewById(R.id.txtTId);
-        txtCId = findViewById(R.id.txtCId);
+        txtCId = findViewById(R.id.txtClsId);
         txtDate = findViewById(R.id.txtDate);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.TAIWAN);
         txtDate.setText(simpleDateFormat.format(today));
@@ -75,7 +72,23 @@ public class ActivityTea_Info_post extends AppCompatActivity {
             str師編 = txtTId.getText().toString();
 
             str選班 = spnCls.getSelectedItem().toString();
+            String cls = new String();
+
+            switch (str選班){
+                case "1年1班":
+                    cls = "403";
+                    break;
+                case "1年2班":
+                    cls = "402";
+                    break;
+                case "1年3班":
+                    cls = "401";
+                    break;
+                    default:
+                        break;
+            }
             str選科 = spnSub.getSelectedItem().toString();
+
             //"今日作業","明日用品","其他提醒"
             str選項 = spnInfo.getSelectedItem().toString();
 
@@ -88,17 +101,20 @@ public class ActivityTea_Info_post extends AppCompatActivity {
             switch (str選項){
                 case "今日作業":
                     strDetails = txtDetails.getText().toString();
-                    data = new CInfo(0,str日期,str選科,strDetails,"","",Integer.parseInt(str選班),Integer.parseInt(str師編));
+                    data = new CInfo(str日期,str選科,strDetails,"","",Integer.parseInt(cls),Integer.parseInt(str師編));
+                    Log.d("LetNoBook_TIP_btn送出","Info類" + data.toString());
                     dataToJson = data.toString();
                     break;
                 case "明日用品":
                     strDetails = txtDetails.getText().toString();
-                    data = new CInfo(0,str日期,str選科,"",strDetails,"",Integer.parseInt(str選班),Integer.parseInt(str師編));
+                    data = new CInfo(str日期,str選科,"",strDetails,"",Integer.parseInt(cls),Integer.parseInt(str師編));
+                    Log.d("LetNoBook_TIP_btn送出","Info類" + data.toString());
                     dataToJson = data.toString();
                     break;
                 case "其他提醒":
                     strDetails = txtDetails.getText().toString();
-                    data = new CInfo(0,str日期,str選科,"","",strDetails,Integer.parseInt(str選班),Integer.parseInt(str師編));
+                    data = new CInfo(str日期,str選科,"","",strDetails,Integer.parseInt(cls),Integer.parseInt(str師編));
+                    Log.d("LetNoBook_TIP_btn送出","Info類" + data.toString());
                     dataToJson = data.toString();
                     break;
             }
@@ -114,7 +130,7 @@ public class ActivityTea_Info_post extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             //取消新增,　回前頁
-            intent = new Intent(ActivityTea_Info_post.this, ActivityTea_xxx.class);
+            intent = new Intent(ActivityTea_Info_post.this, ActivityTea_Info.class);
             startActivity(intent);
         }
     };
@@ -133,8 +149,8 @@ public class ActivityTea_Info_post extends AppCompatActivity {
         @Override
         protected String doInBackground(Void... voids) {
             CHttpPost cp = new CHttpPost();
-            String path = "\n" +
-                    "http://13.67.105.225/api08/ctra/insertINFO/?json=";
+            String path = "http://13.67.105.225/api08/ctra/insertINFO/?json=";
+            //[{"f日期":"2019-02-20", "f科目":"本土語言", "f作業通知":"內容 M", "f用品通知":"", "f其他通知":"", "fClassId": 403, "f老師編號"=200}]
 //            cp.doPost(path,dataToJson);
             String result = cp.doPost(path, dataToJson);
             Log.d("LetNoBook_TIP","上傳中");
@@ -159,7 +175,7 @@ public class ActivityTea_Info_post extends AppCompatActivity {
     //end//新增通知
 
     private void CheckOptions() {
-        // @參數 從 ActivityTea_xxx 傳過來
+        // @參數 從 ActivityTea_Info 傳過來
         intent = getIntent();
         str班編 = intent.getStringExtra(CDictionary.List_editInfoByCId );
         txtCId.setText(str班編);
@@ -195,7 +211,7 @@ public class ActivityTea_Info_post extends AppCompatActivity {
         switch (tid){
             case 200:
                 item班 = new String[]{"1年1班"} ;
-                item科 = new String[]{"本土語言","國語","數學","綜合","生活","健康","閱讀"};
+                item科 = new String[]{"本土語言","國語","數學","綜合","生活","健康","閱讀",""};
 
                 //班級選擇: 建ArrayAdapter
                 adapter班=new ArrayAdapter<String>(
@@ -234,7 +250,7 @@ public class ActivityTea_Info_post extends AppCompatActivity {
                 break;
             case 201:
                 item班 = new String[]{"1年2班"} ;
-                item科 = new String[]{"本土語言","國語","數學","綜合","生活","健康","閱讀"};
+                item科 = new String[]{"本土語言","國語","數學","綜合","生活","健康","閱讀",""};
                 //班級選擇: 建ArrayAdapter
                 adapter班=new ArrayAdapter<String>(
                         this,android.R.layout.simple_list_item_single_choice,item班);
@@ -272,7 +288,7 @@ public class ActivityTea_Info_post extends AppCompatActivity {
                 break;
             case 202:
                 item班 = new String[]{"1年3班"} ;
-                item科 = new String[]{"本土語言","國語","數學","綜合","生活","健康","閱讀"};
+                item科 = new String[]{"本土語言","國語","數學","綜合","生活","健康","閱讀",""};
                 //班級選擇: 建ArrayAdapter
                 adapter班=new ArrayAdapter<String>(
                         this,android.R.layout.simple_list_item_single_choice,item班);

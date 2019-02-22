@@ -30,12 +30,12 @@ public class CCommunicationFactory {
                     s = userId;
                 }else{
                     if(ActivityTea_Contact.stuId==null){
-                        s = ActivityPar_Contact.studentId;
+                        s = ActivityPar_Contact.stuId;
                     }else {
                         s = ActivityTea_Contact.stuId;
                     }
                 }
-                Log.d("LetNoBook", "取Ps:"+ActivityPar_Contact.studentId);
+                Log.d("LetNoBook", "取Ps:"+ActivityPar_Contact.stuId);
                 Log.d("LetNoBook", "取Ts:"+ActivityTea_Contact.stuId);
                 Log.d("LetNoBook", "取Us:"+ActivityLogin.user);
                 list.clear();
@@ -61,9 +61,9 @@ public class CCommunicationFactory {
                         String pMsg = jo.getString("f家長交代事項");
 
                         if(tMsg.equals(null) || tMsg.equals("null"))
-                            tMsg = "空白";
+                            tMsg = "";
                         if(pMsg.equals(null)|| pMsg.equals("null"))
-                            pMsg = "空白";
+                            pMsg = "";
                         Log.d("LetNoBook", "取tMsg:"+tMsg);
                         Log.d("LetNoBook", "取pMsg:"+pMsg);
                         if(id.equals(s)){

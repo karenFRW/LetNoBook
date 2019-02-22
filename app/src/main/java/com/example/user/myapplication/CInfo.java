@@ -22,10 +22,32 @@ public class CInfo {
     private int fClassId;
     private int f老師編號;
 
+    @Override
+    public String toString() {
+        return "[{" +
+                "\"f日期\":\"" + f日期 + "\"" +
+                ", \"f科目\":\"" + f科目 + "\"" +
+                ", \"f作業通知\":\"" + f作業通知 + "\"" +
+                ", \"f用品通知\":\"" + f用品通知 + "\"" +
+                ", \"f其他通知\":\"" + f其他通知 + "\"" +
+                ", \"fClassId\":" + fClassId +
+                ", \"f老師編號\":" + f老師編號 +
+                "}]";
+    }
+
     public CInfo(){
         super();
     }
-
+    public CInfo(String f日期, String f科目, String f作業通知, String f用品通知, String f其他通知, int fClassId, int f老師編號) {
+        this.fInfoId = fInfoId;
+        this.f日期 = f日期;
+        this.f科目 = f科目;
+        this.f作業通知 = f作業通知;
+        this.f用品通知 = f用品通知;
+        this.f其他通知 = f其他通知;
+        this.fClassId = fClassId;
+        this.f老師編號 = f老師編號;
+    }
     public CInfo(int fInfoId, String f日期, String f科目, String f作業通知, String f用品通知, String f其他通知, int fClassId, int f老師編號) {
         this.fInfoId = fInfoId;
         this.f日期 = f日期;

@@ -26,6 +26,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             tools:ignore="MissingConstraints" />
+
         <TextView
             android:id="@+id/txtTop"
             android:layout_width="wrap_content"
@@ -46,7 +47,12 @@
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@+id/txtTop"
             tools:ignore="MissingConstraints">
-
+            <Button
+                android:id="@+id/btnFirst"
+                android:background="@mipmap/ic_arrow_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"/>
             <Button
                 android:id="@+id/btnPreDay"
                 android:layout_width="match_parent"
@@ -54,11 +60,7 @@
                 android:layout_weight="2"
                 android:backgroundTint="@color/colorPrimary"
                 android:background="@mipmap/ic_arrow_back" />
-            <Button
-                android:background="@android:color/transparent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"/>
+
             <TextView
                 android:id="@+id/txtDate"
                 android:gravity="center"
@@ -66,11 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
-            <Button
-                android:background="@android:color/transparent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"/>
+
             <Button
                 android:id="@+id/btnNextDay"
                 android:layout_width="match_parent"
@@ -78,7 +76,14 @@
                 android:layout_weight="2"
                 android:backgroundTint="@color/colorPrimary"
                 android:background="@mipmap/ic_arrow_next" />
+            <Button
+                android:id="@+id/btnLast"
+                android:background="@mipmap/ic_arrow_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"/>
         </LinearLayout>
+
         <TextView
             android:id="@+id/txtS"
             android:text="我的日誌"
@@ -115,45 +120,55 @@
             android:layout_height="180dp"
             app:layout_constraintTop_toBottomOf="@+id/txtT"
             tools:ignore="MissingConstraints" />
-
-        <com.github.clans.fab.FloatingActionMenu
-            android:id="@+id/fabMove"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="1dp"
-            android:elevation="12dp"
-            app:menu_openDirection="down"
-            app:layout_constraintTop_toTopOf="parent"
+        <Button
+            android:id="@+id/btnOne"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:shadowColor="@color/colorSecond"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:src="@mipmap/ic_arrow_back"
-            app:menu_animationDelayPerItem="50"
-            app:menu_colorNormal="@color/colorMediumSpringGreen"
-            app:menu_fab_size="mini"
-            app:menu_labels_colorPressed="@color/colorPrimary"
-            app:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
-            app:menu_labels_position="right"
-            app:menu_labels_showAnimation="@anim/fab_slide_in_from_right"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="514dp">
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints" />
+        <!--<com.github.clans.fab.FloatingActionMenu-->
+            <!--android:id="@+id/fabMove"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="1dp"-->
+            <!--android:elevation="12dp"-->
+            <!--app:menu_openDirection="down"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--android:src="@mipmap/ic_arrow_back"-->
+            <!--app:menu_animationDelayPerItem="50"-->
+            <!--app:menu_colorNormal="@color/colorMediumSpringGreen"-->
+            <!--app:menu_fab_size="mini"-->
+            <!--app:menu_labels_colorPressed="@color/colorPrimary"-->
+            <!--app:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"-->
+            <!--app:menu_labels_position="right"-->
+            <!--app:menu_labels_showAnimation="@anim/fab_slide_in_from_right"-->
+            <!--tools:ignore="MissingConstraints"-->
+            <!--tools:layout_editor_absoluteY="514dp">-->
 
-            <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/fabHome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_home"
-                app:fabSize="mini"
-                app:fab_label="首頁" />
+            <!--<com.github.clans.fab.FloatingActionButton-->
+                <!--android:id="@+id/fabHome"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@mipmap/ic_home"-->
+                <!--app:fabSize="mini"-->
+                <!--app:fab_label="首頁" />-->
 
-            <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/fabPar"
-                app:fab_colorNormal="@color/colorPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/ic_dialog_dialer"
-                app:fabSize="mini"
-                app:fab_label="家長首頁" />
+            <!--<com.github.clans.fab.FloatingActionButton-->
+                <!--android:id="@+id/fabPar"-->
+                <!--app:fab_colorNormal="@color/colorPrimary"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@android:drawable/ic_dialog_dialer"-->
+                <!--app:fabSize="mini"-->
+                <!--app:fab_label="家長首頁" />-->
 
-        </com.github.clans.fab.FloatingActionMenu>
+        <!--</com.github.clans.fab.FloatingActionMenu>-->
         <com.github.clans.fab.FloatingActionMenu
             android:id="@+id/fabMenu"
             android:layout_width="wrap_content"
@@ -178,12 +193,7 @@
                 app:fabSize="mini"/>
 
         </com.github.clans.fab.FloatingActionMenu>
+
     </android.support.constraint.ConstraintLayout>
-
-
-
-
-
-
 
 </android.support.design.widget.CoordinatorLayout>

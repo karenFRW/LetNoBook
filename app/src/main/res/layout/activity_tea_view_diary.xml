@@ -45,13 +45,14 @@
 
         <Button
             android:tooltipText="第一筆"
-            android:id="@+id/btnPreDay"
+            android:id="@+id/btnFirst"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:background="@mipmap/ic_arrow_back" />
         <Button
             android:tooltipText="上一筆"
+            android:id="@+id/btnPreDay"
             android:backgroundTint="@color/colorPrimary"
             android:background="@mipmap/ic_arrow_back"
             android:layout_width="match_parent"
@@ -130,6 +131,18 @@
         android:layout_height="wrap_content"
         android:src="@drawable/pencil"
         app:fabSize="normal"/>
+
+    <Button
+        android:id="@+id/btnOne"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:shadowColor="@color/colorSecond"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
 
 
 </android.support.constraint.ConstraintLayout>

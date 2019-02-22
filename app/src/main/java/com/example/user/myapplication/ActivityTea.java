@@ -35,6 +35,7 @@ public class ActivityTea extends AppCompatActivity {
     private Intent intent = null;
     private Integer teacherId = null;
     private Button btnKids=null;
+    public static String strTId, strTName, strTCls;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,10 @@ public class ActivityTea extends AppCompatActivity {
         setContentView(R.layout.activity_tea);
 
 
+        table = getSharedPreferences(CDictionary.LoginAct_userInfo, MODE_PRIVATE);
+        strTId = table.getString(CDictionary.LoginAct_userId, null);
+        strTName = table.getString(CDictionary.LoginAct_userName, null);
+        strTCls = table.getString(CDictionary.LoginAct_userClassId, null);
 
         InitialComponent();
         new StuListTask().execute(); //學生清單
@@ -70,20 +75,20 @@ public class ActivityTea extends AppCompatActivity {
     private View.OnClickListener btnKids_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            teacherId = Integer.valueOf(table.getString(CDictionary.LoginAct_userId, null));
+            teacherId = Integer.valueOf(strTId);
 
             switch (teacherId){
                 case 200:
                     intent = new Intent(ActivityTea.this, ActivityTea_KidsLocation.class);
                     intent.putExtra(CDictionary.List_viewLocationByClassId, "403");
                     startActivity(intent);
-                    Log.d("LetNoBook_ActivityTea", "開啟 Students Location");
+                    Log.d("LetNoBook_ActivityTea", "200開啟 Students Location");
                     break;
                 case 201:
                     intent = new Intent(ActivityTea.this, ActivityTea_KidsLocation.class);
                     intent.putExtra(CDictionary.List_viewLocationByClassId, "401");
                     startActivity(intent);
-                    Log.d("LetNoBook_ActivityTea", "開啟 Students Location");
+                    Log.d("LetNoBook_ActivityTea", "201開啟 Students Location");
                     break;
                 case 202:
                     intent = new Intent(ActivityTea.this, ActivityTea_KidsLocation.class);
@@ -106,7 +111,6 @@ public class ActivityTea extends AppCompatActivity {
                             , Toast.LENGTH_LONG).show();
                     break;
             }
-
 
         }
     };
@@ -239,8 +243,8 @@ public class ActivityTea extends AppCompatActivity {
     private class StuListTask extends AsyncTask<Void,Void,SimpleAdapter> {
         @Override
         protected SimpleAdapter doInBackground(Void... voids) {
-            String[] from = {"txtItem", "txtId", "teacher"};
-            int[] to = {R.id.txtItem, R.id.txtId, R.id.familyId};
+            String[] from = {"txtItem", "txtId", "txtClsId"};
+            int[] to = {R.id.txtItem, R.id.txtId, R.id.txtClsId};
             HashMap<String, String> hashmap;
 
             //取得(使用者)老師姓名, 當作查 tStudents 的 Key
@@ -266,12 +270,14 @@ public class ActivityTea extends AppCompatActivity {
                     String tName = stu.getString("f導師姓名");
                     String sId = stu.getString("f學生編號");
                     String name = stu.getString("f學生姓名");
+                    String clsId = stu.getString("fClassId");
 
                     hashmap = new HashMap<String, String>();
                     if(tName.equals(teacherName)){
                         hashmap.put("txtId", sId);
                         hashmap.put("txtItem", name);
                         hashmap.put("teacher", tName);
+                        hashmap.put("txtClsId", clsId);
                         Log.d("LetNoBook_ActivityTea", "tStudentsList:" +sId+name);
                         arrayList.add(hashmap);
                     }

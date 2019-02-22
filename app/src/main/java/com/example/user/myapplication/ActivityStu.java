@@ -37,14 +37,14 @@ public class ActivityStu extends AppCompatActivity {
     //宣告變數
     private FloatingActionMenu fabMenu;
     private FloatingActionButton fabAdd, fabSchedule, fabInfo, fabComm;
-    private Button btnPreDay, btnNextDay, btnFirst, btnLast;
+    private Button btnPreDay, btnNextDay, btnFirst, btnLast, btnOne;
     private TextView txtDate, txtDiaryId, txtStuId;
     private TextView txtDiary, txtTeacherReply, txtHttp;
     private SharedPreferences table = null;
     SharedPreferences.Editor row = null;
     private Intent intent = null;
     public static String stuId = null,classId = null, stuName=null, familyId=null;
-    public static int tId = 0;
+    public static String tId;
     public static String tName = null;
     private CDiaryFactory diaryFactory;
     private LayoutInflater inflater = null;
@@ -67,17 +67,19 @@ public class ActivityStu extends AppCompatActivity {
         stuId = table.getString(CDictionary.LoginAct_userId, null);
         stuName = table.getString(CDictionary.LoginAct_userName,null);
         classId = table.getString(CDictionary.LoginAct_userClassId, null);
-        tId = table.getInt(CDictionary.LoginAct_teacherId,0);
+        tId = table.getString(CDictionary.LoginAct_teacherId,null);
         tName = table.getString(CDictionary.LoginAct_teacherName,null);
         familyId = table.getString(CDictionary.LoginAct_userFamilyId, null);
         //取登入者資料
 
         diaryFactory = new CDiaryFactory();
-        inflater = LayoutInflater.from(ActivityStu.this);
+//        diaryFactory.MoveToLast();
+//        CDiary data = diaryFactory.getCurrent();
+//        DisplayDiary(data);
 
         InitialComponent();
 
-//        new PostLocationTask().execute();
+        new PostLocationTask().execute();
     }
 
     private void InitialComponent() {
@@ -109,20 +111,54 @@ public class ActivityStu extends AppCompatActivity {
         fabMenu = findViewById(R.id.fabMenu);
         txtHttp = findViewById(R.id.txtHttp);
 
+        btnOne = findViewById(R.id.btnOne);
+        btnOne.setOnClickListener(btnOne_Click);
+
 
     }
+    private View.OnClickListener btnOne_Click = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(diaryFactory.getSize()<=0){
+                Toast.makeText(ActivityStu.this, "系統整理中, 請稍後再查詢",Toast.LENGTH_LONG);
+                Log.d("LetNoBook_SD", "日誌size<=0");
+            }else {
+                diaryFactory.MoveToLast();
+                CDiary data = diaryFactory.getCurrent();
+                DisplayDiary(data);
+                Toast.makeText(ActivityStu.this, "載入中", Toast.LENGTH_LONG);
+                Log.d("LetNoBook_SD", "btnOne"+data.toString());
+            }
+        }
+    };
     private View.OnClickListener btnFirst_Click= new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            if(diaryFactory.getSize()<=0){
+                Toast.makeText(ActivityStu.this, "系統整理中, 請稍後再查詢",Toast.LENGTH_LONG);
+                Log.d("LetNoBook_SD", "日誌size<=0");
+            }else {
+                diaryFactory.MoveToFirst();
+                CDiary data = diaryFactory.getCurrent();
+                DisplayDiary(data);
+                Toast.makeText(ActivityStu.this, "載入中", Toast.LENGTH_LONG);
+                Log.d("LetNoBook_SD", "btnNextDay_Clicked"+data.toString());
+            }
         }
     };
     private View.OnClickListener btnLast_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-//            diaryFactory.MoveToLast();
-//            CDiary data = diaryFactory.getCurrent();
-//            DisplayDiary(data);
+            if(diaryFactory.getSize()<=0){
+                Toast.makeText(ActivityStu.this, "系統整理中, 請稍後再查詢",Toast.LENGTH_LONG);
+                Log.d("LetNoBook_SD", "日誌size<=0");
+            }else {
+                diaryFactory.MoveToLast();
+                CDiary data = diaryFactory.getCurrent();
+                DisplayDiary(data);
+                Toast.makeText(ActivityStu.this, "載入中", Toast.LENGTH_LONG);
+                Log.d("LetNoBook_SD", "btnNextDay_Clicked"+data.toString());
+            }
         }
     };
     private View.OnClickListener btnPreDay_Click = new View.OnClickListener() {
@@ -231,6 +267,11 @@ public class ActivityStu extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             intent = new Intent(ActivityStu.this, ActivityStu_Contact.class);
+            intent.putExtra(CDictionary.List_viewDiaryById,stuId);
+            intent.putExtra(CDictionary.List_viewDiaryByName,stuName);
+            intent.putExtra(CDictionary.LoginAct_teacherId, tId);
+            intent.putExtra(CDictionary.LoginAct_teacherName, tName);
+
             startActivity(intent);
             Log.d("LetNoBook_Stu", "Go親師留言");
         }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,18 +22,25 @@ import java.util.HashMap;
 public class ActivityPar extends AppCompatActivity {
     private Button btnKids;
     private ListView listView;
+    private TextView txtTitle;
     private String jsonStr = null;
     private mySimpleAdapterP adapter = null;
+    private SharedPreferences table;
     private ArrayList<HashMap<String, String>> arrayList = new ArrayList<HashMap<String, String>>();
-    private SharedPreferences table = null;
     private Intent intent;
-    private String familyId;
+    private String familyId, parName, userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_par);
 
+        txtTitle = findViewById(R.id.txtTitle);
+
+        table = getSharedPreferences(CDictionary.LoginAct_userInfo,MODE_PRIVATE);
+        userId = table.getString(CDictionary.LoginAct_userFamilyId,null);
+        familyId = table.getString(CDictionary.LoginAct_userFamilyId,null);
+        parName = table.getString(CDictionary.LoginAct_userName,null);
         btnKids = findViewById(R.id.btnKids);
         btnKids.setOnClickListener(btnKids_Click);
 
@@ -41,24 +49,36 @@ public class ActivityPar extends AppCompatActivity {
         new ParseTask().execute();//取得小孩列表
 
     }
+
+
     private View.OnClickListener btnKids_Click = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            table = getSharedPreferences(CDictionary.LoginAct_userInfo, MODE_PRIVATE);
-            familyId = table.getString(CDictionary.LoginAct_userId, null);
-            intent = new Intent(ActivityPar.this, ActivityPar_KidsLocation.class);
-            intent.putExtra(CDictionary.LoginAct_userFamilyId, familyId);
-            startActivity(intent);
-            Log.d("LetNoBook_ActivityPar", "開啟 Kids Location");
+            try{
+
+                table = getSharedPreferences(CDictionary.LoginAct_userInfo, MODE_PRIVATE);
+                familyId = table.getString(CDictionary.LoginAct_userId, null);
+                intent = new Intent(ActivityPar.this, ActivityPar_KidsLocation.class);
+                intent.putExtra(CDictionary.LoginAct_userFamilyId, familyId);
+                startActivity(intent);
+                Log.d("LetNoBook_ActivityPar", "開啟 Kids Location");
+            }catch (Exception e){
+                e.printStackTrace();
+                Log.d("LetNoBook_Par", "e:"+e.toString());
             }
+
+
+        }
     };
+
+
     private class ParseTask extends AsyncTask<Void,Void,SimpleAdapter> {
         @Override
         protected SimpleAdapter doInBackground(Void... voids) {
-            String[] from = {"stu_name", "stu_id", "familyId"};
-            int[] to = {R.id.stu_name, R.id.stu_id, R.id.familyId};
+            String[] from = {"stu_name", "stu_id", "txtCIsId", "familyId"};
+            int[] to = {R.id.stu_name, R.id.stu_id, R.id.txtClsId, R.id.familyId};
             HashMap<String, String> hashmap;
-            Integer sId = 0;
+            String sId;
 
             table = getSharedPreferences(CDictionary.LoginAct_userInfo,MODE_PRIVATE);
             String famId = table.getString(CDictionary.LoginAct_userId, null);
@@ -77,19 +97,20 @@ public class ActivityPar extends AppCompatActivity {
                 for (int i = 0; i < jArray.length(); i++) {
                     JSONObject s = jArray.getJSONObject(i);
 
-                    sId = Integer.valueOf( s.getString("f學生編號"));
+                    sId = s.getString("f學生編號");
                     String name = s.getString("f學生姓名");
                     String t = s.getString("f導師姓名");
                     String cId = s.getString("fClassId");
                     String fd = s.getString("f家庭編號");
 
-                    Log.d("LetNoBook", "tStudent:" + sId + name + ",導師:" + t + ",班級:" + cId);
+                    Log.d("LetNoBook", "Kids:" + sId + name + ",導師:" + t + ",班級:" + cId);
 
                     hashmap = new HashMap<String, String>();
-                    hashmap.put("stu_id", sId.toString());
+                    hashmap.put("stu_id", sId);
                     hashmap.put("stu_name", name);
-                    hashmap.put("txtClass", cId);
+                    hashmap.put("txtCIsId", cId);
                     hashmap.put("familyId", fd);
+                    Log.d("LetNoBook", "putIntoList==" + sId + name + "," + cId + "," + fd);
                     arrayList.add(hashmap);
                 }
 
@@ -104,7 +125,6 @@ public class ActivityPar extends AppCompatActivity {
         protected void onPostExecute(final SimpleAdapter adapter) {
             super.onPostExecute(adapter);
             listView.setAdapter(adapter);
-            listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE); //設定選單為單選
 
             Log.d("LetNoBook_ActivityPar", "取得小孩列表");
         }

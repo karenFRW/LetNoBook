@@ -15,14 +15,14 @@ import com.github.clans.fab.FloatingActionButton;
 
 public class ActivityPar_ViewDiary extends AppCompatActivity {
     private FloatingActionButton fabSchedule, fabInfo;
-    private TextView txtTop, txtDate, txtDiaryId, txtStuId;
-    private Button btnPreDay, btnNextDay;
+    private TextView txtTop, txtDate, txtDiaryId, txtStuId,txtCId;
+    private Button btnPreDay, btnNextDay, btnFirst, btnLast, btnOne;
     private TextView txtDiary, txtReply;
     private CDiaryFactory diaryFactory;
     private Intent intent;
-    public static String studentId = new String(), studentName = new String();
+    public static String studentId = new String();
+    public static String studentName = new String();
     public static String classId = new String();
-
 
 
     @Override
@@ -33,6 +33,7 @@ public class ActivityPar_ViewDiary extends AppCompatActivity {
         //@學生編號 @學生姓名 @學生班級編號 從接口 mySimpleAdapterP 傳過來
         intent = getIntent();
         studentId = intent.getStringExtra(CDictionary.List_viewDiaryById);
+        Log.d("LetNoBook_PVD","getIntent_stuId:"+studentId);
         studentName = intent.getStringExtra(CDictionary.List_viewDiaryByName);
         classId = intent.getStringExtra(CDictionary.List_viewInfoByClassId); //再傳去通知事項當參數
 
@@ -45,6 +46,7 @@ public class ActivityPar_ViewDiary extends AppCompatActivity {
 
         fabInfo = findViewById(R.id.fabInfo);
         fabInfo.setOnClickListener(fabInfo_Click);
+
         txtDiaryId = findViewById(R.id.txtDiaryId);
         txtStuId = findViewById(R.id.txtStuId);
         txtTop = findViewById(R.id.txtTop);
@@ -54,11 +56,34 @@ public class ActivityPar_ViewDiary extends AppCompatActivity {
         txtDiary.getBackground().setAlpha(70);
         txtReply = findViewById(R.id.txtReply);
         txtReply.getBackground().setAlpha(70);
+
         btnPreDay = findViewById(R.id.btnPreDay);
         btnPreDay.setOnClickListener(btnPreDay_Click);
         btnNextDay = findViewById(R.id.btnNextDay);
         btnNextDay.setOnClickListener(btnNextDay_Click);
+        btnFirst = findViewById(R.id.btnFirst);
+        btnFirst.setOnClickListener(btnFirst_Click);
+        btnLast = findViewById(R.id.btnLast);
+        btnLast.setOnClickListener(btnLast_Click);
+        btnOne = findViewById(R.id.btnOne);
+        btnOne.setOnClickListener(btnOne_Click);
     }
+
+    private View.OnClickListener btnOne_Click = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(diaryFactory.getSize()<=0){
+                Toast.makeText(ActivityPar_ViewDiary.this, "系統整理中, 請稍後再查詢",Toast.LENGTH_LONG);
+                Log.d("LetNoBook_TD", "日誌size<=0");
+            }else {
+                diaryFactory.MoveToLast();
+                CDiary data = diaryFactory.getCurrent();
+                DisplayDiary(data);
+                Toast.makeText(ActivityPar_ViewDiary.this, "載入中", Toast.LENGTH_LONG);
+                Log.d("LetNoBook_TD", "btnOne"+data.toString());
+            }
+        }
+    };
 
     private View.OnClickListener btnPreDay_Click = new View.OnClickListener() {
         @Override
@@ -91,6 +116,36 @@ public class ActivityPar_ViewDiary extends AppCompatActivity {
                 Log.d("LetNoBook_PVD", "btnNextDay_Clicked"+data.toString());
             }
 
+        }
+    };
+    private View.OnClickListener btnFirst_Click= new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(diaryFactory.getSize()<=0){
+                Toast.makeText(ActivityPar_ViewDiary.this, "系統整理中, 請稍後再查詢",Toast.LENGTH_LONG);
+                Log.d("LetNoBook_SD", "日誌size<=0");
+            }else {
+                diaryFactory.MoveToFirst();
+                CDiary data = diaryFactory.getCurrent();
+                DisplayDiary(data);
+                Toast.makeText(ActivityPar_ViewDiary.this, "載入中", Toast.LENGTH_LONG);
+                Log.d("LetNoBook_SD", "btnNextDay_Clicked"+data.toString());
+            }
+        }
+    };
+    private View.OnClickListener btnLast_Click = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(diaryFactory.getSize()<=0){
+                Toast.makeText(ActivityPar_ViewDiary.this, "系統整理中, 請稍後再查詢",Toast.LENGTH_LONG);
+                Log.d("LetNoBook_SD", "日誌size<=0");
+            }else {
+                diaryFactory.MoveToLast();
+                CDiary data = diaryFactory.getCurrent();
+                DisplayDiary(data);
+                Toast.makeText(ActivityPar_ViewDiary.this, "載入中", Toast.LENGTH_LONG);
+                Log.d("LetNoBook_SD", "btnNextDay_Clicked"+data.toString());
+            }
         }
     };
 

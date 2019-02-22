@@ -14,7 +14,7 @@ import com.github.clans.fab.FloatingActionButton;
 
 public class ActivityTea_ViewDiary extends AppCompatActivity {
     TextView txtTitle, txtDate, txtDiaryId, txtSId,txtDiary,txtReply;
-    Button btnPreDay, btnNextDay;
+    Button btnPreDay, btnNextDay, btnFirst, btnLast, btnOne;
     FloatingActionButton fabReply;
     private CDiaryFactory diaryFactory;
     public static String studentId = new String();
@@ -44,16 +44,24 @@ public class ActivityTea_ViewDiary extends AppCompatActivity {
         diaryFactory = new CDiaryFactory();
 
         InitialComponent();
-//        ShowFirst();
+
     }
 
     private void InitialComponent() {
         txtDiaryId = findViewById(R.id.txtDiaryId);
         txtSId = findViewById(R.id.txtStuId);
+
         btnPreDay = findViewById(R.id.btnPreDay);
         btnPreDay.setOnClickListener(btnPreDay_Click);
         btnNextDay = findViewById(R.id.btnNextDay);
         btnNextDay.setOnClickListener(btnNextDay_Click);
+        btnFirst = findViewById(R.id.btnFirst);
+        btnFirst.setOnClickListener(btnFirst_Click);
+        btnLast = findViewById(R.id.btnLast);
+        btnLast.setOnClickListener(btnLast_Click);
+        btnOne = findViewById(R.id.btnOne);
+        btnOne.setOnClickListener(btnOne_Click);
+
         txtTitle = findViewById(R.id.txtTitle);
         txtTitle.setText("正在看"+studentName + " 的日誌");
         txtDate = findViewById(R.id.txtDate);
@@ -62,12 +70,57 @@ public class ActivityTea_ViewDiary extends AppCompatActivity {
         txtReply = findViewById(R.id.txtReply);
         txtReply.getBackground().setAlpha(70);
         txtReply.setClickable(false);
+
         fabReply = findViewById(R.id.fabReply);
         fabReply.setOnClickListener(fabReply_Click);
 
-
     }
 
+    private View.OnClickListener btnOne_Click = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(diaryFactory.getSize()<=0){
+                Toast.makeText(ActivityTea_ViewDiary.this, "系統整理中, 請稍後再查詢",Toast.LENGTH_LONG);
+                Log.d("LetNoBook_TD", "日誌size<=0");
+            }else {
+                diaryFactory.MoveToLast();
+                CDiary data = diaryFactory.getCurrent();
+                DisplayDiary(data);
+                Toast.makeText(ActivityTea_ViewDiary.this, "載入中", Toast.LENGTH_LONG);
+                Log.d("LetNoBook_TD", "btnOne"+data.toString());
+            }
+        }
+    };
+    private View.OnClickListener btnFirst_Click= new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(diaryFactory.getSize()<=0){
+                Toast.makeText(ActivityTea_ViewDiary.this, "系統整理中, 請稍後再查詢",Toast.LENGTH_LONG);
+                Log.d("LetNoBook_SD", "日誌size<=0");
+            }else {
+                diaryFactory.MoveToFirst();
+                CDiary data = diaryFactory.getCurrent();
+                DisplayDiary(data);
+                Toast.makeText(ActivityTea_ViewDiary.this, "載入中", Toast.LENGTH_LONG);
+                Log.d("LetNoBook_SD", "btnNextDay_Clicked"+data.toString());
+            }
+        }
+    };
+    private View.OnClickListener btnLast_Click = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(diaryFactory.getSize()<=0){
+                Toast.makeText(ActivityTea_ViewDiary.this, "系統整理中, 請稍後再查詢",Toast.LENGTH_LONG);
+                Log.d("LetNoBook_SD", "日誌size<=0");
+            }else {
+                diaryFactory.MoveToLast();
+                CDiary data = diaryFactory.getCurrent();
+                DisplayDiary(data);
+                Toast.makeText(ActivityTea_ViewDiary.this, "載入中", Toast.LENGTH_LONG);
+                Log.d("LetNoBook_SD", "btnNextDay_Clicked"+data.toString());
+            }
+        }
+    };
     private View.OnClickListener fabReply_Click= new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -87,14 +140,7 @@ public class ActivityTea_ViewDiary extends AppCompatActivity {
             startActivity(intent);
 
 
-            Log.d("LetNoBook_TeaViewDiary", "GO回覆");
-
-        }
-    };
-
-    private View.OnClickListener fabPut_Click = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+            Log.d("LetNoBook_TD", "GO回覆");
 
         }
     };
@@ -104,13 +150,13 @@ public class ActivityTea_ViewDiary extends AppCompatActivity {
         public void onClick(View v) {
             if(diaryFactory.getSize()<=0){
                 Toast.makeText(ActivityTea_ViewDiary.this, "系統整理中, 請稍後再查詢",Toast.LENGTH_LONG);
-                Log.d("LetNoBook_TVD", "日誌size<=0");
+                Log.d("LetNoBook_TD", "日誌size<=0");
             }else {
                 diaryFactory.MoveToPrevious();
                 CDiary data = diaryFactory.getCurrent();
                 DisplayDiary(data);
                 Toast.makeText(ActivityTea_ViewDiary.this, "載入中", Toast.LENGTH_LONG);
-                Log.d("LetNoBook_TVD", "btnNextDay_Clicked"+data.toString());
+                Log.d("LetNoBook_TD", "btnNextDay_Clicked"+data.toString());
             }
 
         }
@@ -121,13 +167,13 @@ public class ActivityTea_ViewDiary extends AppCompatActivity {
         public void onClick(View v) {
             if(diaryFactory.getSize()<=0){
                 Toast.makeText(ActivityTea_ViewDiary.this, "系統整理中, 請稍後再查詢",Toast.LENGTH_LONG);
-                Log.d("LetNoBook_TVD", "日誌size<=0");
+                Log.d("LetNoBook_TD", "日誌size<=0");
             }else {
                 diaryFactory.MoveToNext();
                 CDiary data = diaryFactory.getCurrent();
                 DisplayDiary(data);
                 Toast.makeText(ActivityTea_ViewDiary.this, "載入中", Toast.LENGTH_LONG);
-                Log.d("LetNoBook_TVD", "btnNextDay_Clicked:"+data.toString());
+                Log.d("LetNoBook_TD", "btnNextDay_Clicked:"+data.toString());
             }
 
         }

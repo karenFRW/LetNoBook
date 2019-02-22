@@ -34,10 +34,8 @@ public class ActivityTea_KidsLocation extends AppCompatActivity {
         setContentView(R.layout.activity_view_kids_location);
 
         intent = getIntent();
-        classId = intent.getStringExtra(CDictionary.LoginAct_userFamilyId);
+        classId = intent.getStringExtra(CDictionary.List_viewLocationByClassId);
         Log.d("LetNoBook_Tea_Kids", "classId:"+classId);
-
-
 
         A();
 
