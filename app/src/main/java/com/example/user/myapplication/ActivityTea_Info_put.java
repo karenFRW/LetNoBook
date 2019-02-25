@@ -87,6 +87,7 @@ public class ActivityTea_Info_put extends AppCompatActivity {
         public void onClick(View v) {
             //取消新增,　回前頁
             intent = new Intent(ActivityTea_Info_put.this, ActivityTea_Info.class);
+            intent.putExtra(CDictionary.LoginAct_userClassId,str班編);
             startActivity(intent);
         }
     };
