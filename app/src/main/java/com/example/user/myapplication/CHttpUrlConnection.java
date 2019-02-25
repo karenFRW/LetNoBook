@@ -16,7 +16,7 @@ public class CHttpUrlConnection {
     private String data = new String();
     private HttpURLConnection conn = null;
     private BufferedReader bufferedReader = null;
-    private String path = "http://13.67.105.225/api/";
+    private String path = "http://52.246.164.133/api/";
     protected String getTable(String tableName) {
         try {
             //ip位址

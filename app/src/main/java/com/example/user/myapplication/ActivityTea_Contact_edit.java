@@ -170,7 +170,7 @@ public class ActivityTea_Contact_edit extends AppCompatActivity {
 
             //老師update自己的交代事項,  ID是f交流編號, content=後面是更新的內容
             //http://13.67.105.225/api06/ctra/CTUpdate/?id=1&content=Helloiamteacher
-            String path = "http://13.67.105.225/api06/ctra/CTUpdate/?id=" + int留言idnew +"&content=";
+            String path = "http://52.246.164.133/api01/ctra/CTUpdate/?id=" + int留言idnew +"&content=";
             dataToJson = str師言new;
 //            cp.doPost(path,dataToJson);
             String result = cp.doPost(path, dataToJson);

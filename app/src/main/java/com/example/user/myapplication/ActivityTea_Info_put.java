@@ -142,7 +142,7 @@ public class ActivityTea_Info_put extends AppCompatActivity {
             CHttpPost cp = new CHttpPost();
             //api參數 日誌編號@id 作業@hw 用品@item 其他@memo
             //http://13.67.105.225/api09/ctra/ITUpdate/?id=2&hw=英文第一課習作&item=帶英文字典&memo=下禮拜三小考
-            String path = "http://13.67.105.225/api09/ctra/ITUpdate/?id=";
+            String path = "http://52.246.164.133/api01/ctra/ITUpdate/?id=";
             dataToJson = str日編new+"&hw="+str作業new+"&item="+str用品new+"&memo="+str其他new;
             String result = cp.doPost(path, dataToJson);
             Log.d("LetNoBook_TI_Put","上傳中"+dataToJson);

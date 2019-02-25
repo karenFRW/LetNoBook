@@ -97,7 +97,7 @@ public class ActivityTea_Diary_edit extends AppCompatActivity {
         protected String doInBackground(Void... voids) {
             CHttpPost cp = new CHttpPost();
 
-            String path = "http://13.67.105.225/api05/ctrA/DTUpdate/?id=" + 日誌id+
+            String path = "http://52.246.164.133/api01/ctrA/DTUpdate/?id=" + 日誌id+
                     "&content=";
 //            cp.doPost(path,dataToJson);
             String result = cp.doPost(path, str批改);

@@ -149,7 +149,7 @@ public class ActivityTea_Info_post extends AppCompatActivity {
         @Override
         protected String doInBackground(Void... voids) {
             CHttpPost cp = new CHttpPost();
-            String path = "http://13.67.105.225/api08/ctra/insertINFO/?json=";
+            String path = "http://52.246.164.133/api01/ctra/insertINFO/?json=";
             //[{"f日期":"2019-02-20", "f科目":"本土語言", "f作業通知":"內容 M", "f用品通知":"", "f其他通知":"", "fClassId": 403, "f老師編號"=200}]
 //            cp.doPost(path,dataToJson);
             String result = cp.doPost(path, dataToJson);

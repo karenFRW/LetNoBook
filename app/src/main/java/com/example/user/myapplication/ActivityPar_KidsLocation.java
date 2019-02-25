@@ -110,7 +110,7 @@ public class ActivityPar_KidsLocation extends AppCompatActivity {
                 //建立一個請求物件
 
                 Request request = new Request.Builder()
-                        .url("http://13.67.105.225/API03/ctra/familygps/?id=310")
+                        .url("http://52.246.164.133/api01/ctra/familygps/?id=310")
                         .build();
                 //http://13.67.105.225/API03/ctra/classgps/?id=401
                 //http://13.67.105.225/API03/ctra/familygps/?id=310

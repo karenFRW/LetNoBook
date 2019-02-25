@@ -104,7 +104,7 @@ public class ActivityStu_Diary_edit extends AppCompatActivity {
         @Override
         protected String doInBackground(Void... voids) {
             CHttpPost cp = new CHttpPost();
-            String path = "http://13.67.105.225/api04/ctrA/insertDiary/?json=";
+            String path = "http://52.246.164.133/api01/ctrA/insertDiary/?json=";
 //            cp.doPost(path,dataToJson);
             String result = cp.doPost(path, dataToJson);
             Log.d("LetNoBook_SDT","上傳中");
