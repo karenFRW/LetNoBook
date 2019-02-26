@@ -1,7 +1,7 @@
 # LetNoBook
 Let No Book 電子聯絡簿系統 APP 開發
 
-This is a side project I created with my team. There are 5 people in my team, 3 builded a website, me and another team member developed this Android app.
+This is a side project I created with my team. There are 5 people in my team, 3 build a website, me and another team member developed this Android app.
 
 Why we made this project? 
 
