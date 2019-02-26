@@ -328,7 +328,7 @@ public class ActivityStu extends AppCompatActivity {
             setThreadPolicy(l_policy);
             //--end
             CHttpPost cp = new CHttpPost();
-            String path = "http://13.67.105.225/api01/ctrA/insert/?json=";
+            String path = "http://52.246.164.133/api01/ctrA/insert/?json=";
 
             //取得現在時間--Start
             Date now = new Date();
