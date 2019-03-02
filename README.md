@@ -10,6 +10,27 @@ In Taiwan, due to elementary school is too rely on the communication book to exc
 Anytime, anywhere, you can do the communication with kid, parents, teacher, if you have internet. 
 
 
-
 Let's see how our project works like on YouTube, https://youtu.be/YSPT51ZUWl0 ; 
+
 Android app starts from https://www.youtube.com/watch?v=YSPT51ZUWl0&t=651s
+
+
+Welcome Page
+
+![Image](https://github.com/karenFRW/LetNoBook/blob/master/letnobook_pics/lnb_1.png)
+
+
+Home Page
+
+I use his/her(https://github.com/Hitomis/CircleMenu) Circle Menu as only button on my main page.
+
+![Image](https://github.com/karenFRW/LetNoBook/blob/master/letnobook_pics/lnb_2.png)
+
+
+User: Student_Home page
+
+Upload kid's location when they login at the beginning. 
+
+(It will work, when user allow this app read its gps) 
+![Image](https://github.com/karenFRW/LetNoBook/blob/master/letnobook_pics/lnb_s_upload_location.png)
+
